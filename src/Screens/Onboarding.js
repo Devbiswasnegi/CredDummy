@@ -1,0 +1,86 @@
+import {
+  SafeAreaView,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  View,
+} from 'react-native';
+import React from 'react';
+import {vw, vh} from '../Util/dimensions';
+import LinearGradient from 'react-native-linear-gradient';
+
+const Onboarding = () => {
+  return (
+    <SafeAreaView
+      style={{
+        backgroundColor: '#202427',
+        flex: 1,
+        alignItems: 'center',
+      }}>
+      <Text
+        style={{
+          color: '#CDCDCD',
+          fontWeight: 'bold',
+          fontSize: vw(22),
+          letterSpacing: 0.5,
+          width: vw(250),
+          textAlign: 'center',
+        }}>
+        pay your credit card bills. win rewards.
+      </Text>
+
+      <View
+        style={{
+          width: vw(310),
+          height: vh(55),
+          borderRadius: vw(30),
+          //   borderWidth: 1,
+          borderColor: '#202427',
+          borderColor: 'white',
+          shadowColor: '#FFFFFF50',
+          shadowOffset: {
+            width: -4,
+            height: -5,
+          },
+          shadowOpacity: 0.5,
+          shadowRadius: 8,
+
+          marginTop: vh(30),
+          alignItems: 'center',
+          justifyContent: 'center',
+          backgroundColor: '#202427',
+        }}>
+        <LinearGradient
+          colors={['#385EA7', '#2E4E97']}
+          style={{width: vw(300), height: vh(45), borderRadius: vw(26)}}
+          start={{x: 0, y: 0}}
+          end={{x: 1, y: 0}}>
+          <TouchableOpacity
+            style={{
+              // borderWidth: 4,
+              // borderColor: '#202427',
+              width: vw(300),
+              height: vh(45),
+              borderRadius: vw(26),
+              alignItems: 'center',
+              justifyContent: 'center',
+            }}>
+            <Text
+              style={{
+                color: '#E6C6B1',
+                fontWeight: 'bold',
+                letterSpacing: 0.8,
+                fontSize: vw(16),
+              }}>
+              Continue
+            </Text>
+          </TouchableOpacity>
+        </LinearGradient>
+      </View>
+    </SafeAreaView>
+  );
+};
+
+export default Onboarding;
+
+const styles = StyleSheet.create({});
