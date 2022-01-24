@@ -1,4 +1,5 @@
 import {
+  Image,
   SafeAreaView,
   StyleSheet,
   Text,
@@ -8,15 +9,37 @@ import {
 import React from 'react';
 import {vw, vh} from '../Util/dimensions';
 import LinearGradient from 'react-native-linear-gradient';
+import {localImages} from '../Util/LocalImages';
 
-const Onboarding = () => {
+const Onboarding = props => {
   return (
     <SafeAreaView
       style={{
         backgroundColor: '#202427',
         flex: 1,
         alignItems: 'center',
+        // justifyContent:"center"
       }}>
+      <View
+        style={{
+            borderWidth: 1,
+            borderColor: 'white',
+          alignItems: 'center',
+          justifyContent: 'center',
+          paddingVertical: vh(80),
+        }}>
+        <Image
+          source={localImages.CircleCard}
+          style={{flex: 0.7}}
+          resizeMode="contain"
+        />
+
+        <Image
+          source={localImages.cardFrame}
+          style={{position: 'absolute', flex: 0.3}}
+          resizeMode="contain"
+        />
+      </View>
       <Text
         style={{
           color: '#CDCDCD',
@@ -64,7 +87,8 @@ const Onboarding = () => {
               borderRadius: vw(26),
               alignItems: 'center',
               justifyContent: 'center',
-            }}>
+            }}
+            onPress={() => props.navigation.navigate('ContactNumber')}>
             <Text
               style={{
                 color: '#E6C6B1',

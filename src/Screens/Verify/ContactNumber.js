@@ -4,13 +4,16 @@ import {
   Text,
   TouchableOpacity,
   View,
+  Image,
 } from 'react-native';
-import React from 'react';
+import React, {useState} from 'react';
 import {vh, vw} from '../../Util/dimensions';
 import TextNumber from '../../Components/TextNumber';
 import ButtonComponent from '../../Components/ButtonComponent';
+import {localImages} from '../../Util/LocalImages';
 
 const ContactNumber = () => {
+  const [check, setCheck] = useState(false);
   return (
     <SafeAreaView style={{flex: 1, backgroundColor: '#202427'}}>
       <View style={{marginLeft: vw(24), marginTop: vh(30)}}>
@@ -39,10 +42,15 @@ const ContactNumber = () => {
         </Text>
 
         <View style={{paddingVertical: vh(20)}}>
-          <TextNumber placeholder={'9999999999'} />
+          <TextNumber placeholder={'9999999999'} 
+          maxLength={10}
+          />
         </View>
 
         <TouchableOpacity
+          onPress={() => {
+            setCheck(!check);
+          }}
           style={{
             borderWidth: 1,
             borderColor: 'white',
@@ -53,7 +61,16 @@ const ContactNumber = () => {
             marginBottom: vh(25),
             backgroundColor: '#282828',
             opacity: 0.5,
-          }}></TouchableOpacity>
+            alignItems: 'center',
+            justifyContent: 'center',
+          }}>
+          {check ? (
+            <Image
+              source={localImages.Check}
+              style={{width: vw(16), height: vw(16)}}
+            />
+          ) : null}
+        </TouchableOpacity>
 
         <View
           style={{
