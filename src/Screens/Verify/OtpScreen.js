@@ -45,7 +45,7 @@ const OtpScreen = (props) => {
         <View style={{marginTop: vh(300)}}>
           <ButtonComponent 
           
-          onPress={()=>props.navigation.navigate("CardDetailsStartModal")}/>
+          onPress={()=>props.navigation.navigate("GrantPermission")}/>
         </View>
       </View>
     </SafeAreaView>

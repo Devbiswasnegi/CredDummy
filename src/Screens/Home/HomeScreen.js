@@ -15,27 +15,10 @@ import ActivateCard from './ActivateCard';
 const HomeScreen = () => {
   return (
     <SafeAreaView style={styles.mainView}>
-      <ScrollView showsVerticalScrollIndicator={false} >
-        <View style={{width: screenWidth - vw(40), alignSelf: 'center',marginBottom:vh(30)}}>
-          <Text
-            style={{
-              color: 'white',
-              fontSize: vw(25),
-              fontWeight: 'bold',
-              letterSpacing: 0.5,
-              marginBottom: vh(10),
-            }}>
-            hello, Devbiswas
-          </Text>
-          <Text
-            style={{
-              color: 'white',
-              fontSize: vw(14),
-              letterSpacing: 0.5,
-              lineHeight: vh(20),
-              width: vw(210),
-              marginBottom:vh(20)
-            }}>
+      <ScrollView showsVerticalScrollIndicator={false}>
+        <View style={styles.ViewOne}>
+          <Text style={styles.nameText}>hello, Devbiswas</Text>
+          <Text style={styles.rec}>
             here are today's recommended actions for you
           </Text>
 
@@ -92,5 +75,25 @@ const styles = StyleSheet.create({
     // alignItems: 'center',
     // justifyContent: 'center',
     // marginTop: -vh(100),
+  },
+  ViewOne: {
+    width: screenWidth - vw(40),
+    alignSelf: 'center',
+    marginBottom: vh(30),
+  },
+  nameText: {
+    color: 'white',
+    fontSize: vw(25),
+    fontWeight: 'bold',
+    letterSpacing: 0.5,
+    marginBottom: vh(10),
+  },
+  rec: {
+    color: 'white',
+    fontSize: vw(14),
+    letterSpacing: 0.5,
+    lineHeight: vh(20),
+    width: vw(210),
+    marginBottom: vh(20),
   },
 });

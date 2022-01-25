@@ -22,8 +22,8 @@ const Onboarding = props => {
       }}>
       <View
         style={{
-            borderWidth: 1,
-            borderColor: 'white',
+            // borderWidth: 1,
+            // borderColor: 'white',
           alignItems: 'center',
           justifyContent: 'center',
           paddingVertical: vh(80),

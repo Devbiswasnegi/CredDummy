@@ -3,7 +3,7 @@ import React from 'react';
 import {vh, vw} from '../Util/dimensions';
 import LinearGradient from 'react-native-linear-gradient';
 
-const ButtonTrue = () => {
+const ButtonTrue = (props) => {
   return (
     <View  style={{
       width: vw(200),
@@ -37,7 +37,7 @@ const ButtonTrue = () => {
       shadowRadius: 10,
 
     }}>
-      <TouchableOpacity
+      <TouchableOpacity onPress={props.grantPress}
         style={{
           alignItems: 'center',
           justifyContent: 'center',

@@ -11,7 +11,8 @@ import PermissionComp from '../../Components/PermissionComp';
 import {localImages} from '../../Util/LocalImages';
 import ButtonTrue from '../../Components/ButtonTrue';
 
-const GrantPermission = () => {
+const GrantPermission = (props) => {
+  // console.log("grantpermission",props)
   return (
     <SafeAreaView style={{flex: 1, backgroundColor: '#202427'}}>
       <View style={{marginLeft: vw(24), marginTop: vh(20)}}>
@@ -67,7 +68,10 @@ const GrantPermission = () => {
           discription="we need this permission ti intelligently surface location specific rewards and alerts"
         />
         <View style={{marginTop:vh(100)}}>
-      <ButtonTrue/>
+      <ButtonTrue
+      
+      grantPress ={()=>{props.navigation.navigate("CardDetailsStartModal")}}
+      />
       </View>
       </View>
 
