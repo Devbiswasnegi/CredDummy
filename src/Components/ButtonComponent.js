@@ -3,7 +3,7 @@ import React from 'react';
 import {vh, vw} from '../Util/dimensions';
 import LinearGradient from 'react-native-linear-gradient';
 
-const ButtonComponent = () => {
+const ButtonComponent = (props) => {
   return (
     <View  style={{
       width: vw(200),
@@ -20,12 +20,27 @@ const ButtonComponent = () => {
       shadowRadius: 2,
 
     }}>
+       <View style={{
+      width: vw(200),
+      height: vh(45),
+      // borderWidth: 1,
+      // borderColor: 'white',
+      // borderRadius: vw(25),
+      shadowColor: 'black',
+      shadowOffset: {
+        width: 5,
+        height: 10,
+      },
+      shadowOpacity: 1,
+      shadowRadius: 15,
+
+    }}>
       <TouchableOpacity
         style={{
           alignItems: 'center',
           justifyContent: 'center',
           
-        }}>
+        }} onPress={props.onPress}>
         <LinearGradient
           start={{x: 0.1, y: 0.1}}
           end={{x: 0.6, y: 1.0}}
@@ -52,6 +67,7 @@ const ButtonComponent = () => {
           </Text>
         </LinearGradient>
       </TouchableOpacity>
+      </View>
     </View>
   );
 };

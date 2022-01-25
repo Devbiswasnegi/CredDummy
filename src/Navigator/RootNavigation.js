@@ -7,21 +7,24 @@ import Onboarding from '../Screens/Onboarding';
 import ContactNumber from '../Screens/Verify/ContactNumber';
 import GrantPermission from '../Screens/Verify/GrantPermission';
 import OtpScreen from '../Screens/Verify/OtpScreen';
+import CardDetailsStartModal from '../Modals/CardDetailsStartModal';
+import BottomTabNavigator from './BottomTabNavigator';
+import AfterDetails from '../Screens/Verify/AfterDetails';
 
 const Stack = createNativeStackNavigator();
 
 function RootNavigation() {
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName="OtpScreen">
+      <Stack.Navigator initialRouteName="Splash">
+          <Stack.Screen
+            name="Splash"
+            component={Splash}
+            options={{headerShown: false}}
+          />
         <Stack.Screen
           name="Onboarding"
           component={Onboarding}
-          options={{headerShown: false}}
-        />
-        <Stack.Screen
-          name="Splash"
-          component={Splash}
           options={{headerShown: false}}
         />
 
@@ -39,6 +42,24 @@ function RootNavigation() {
         <Stack.Screen
           name="OtpScreen"
           component={OtpScreen}
+          options={{headerShown: false}}
+        />
+
+<Stack.Screen
+          name="CardDetailsStartModal"
+          component={CardDetailsStartModal}
+          options={{headerShown: false}}
+        />
+
+<Stack.Screen
+          name="AfterDetails"
+          component={AfterDetails}
+          options={{headerShown: false}}
+        />
+
+<Stack.Screen
+          name="BottomTabNavigator"
+          component={BottomTabNavigator}
           options={{headerShown: false}}
         />
       </Stack.Navigator>

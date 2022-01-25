@@ -6,11 +6,13 @@ import TextNumber from '../../Components/TextNumber';
 import BackButton from '../../Components/BackButton';
 import ButtonComponent from '../../Components/ButtonComponent';
 
-const OtpScreen = () => {
+const OtpScreen = (props) => {
   return (
     <SafeAreaView style={styles.mainView}>
       <View style={{marginLeft: vw(15)}}>
-        <BackButton />
+        <BackButton
+        {...props}
+        />
       </View>
       <View style={{marginLeft: vw(35), marginTop: vh(25)}}>
         <Text
@@ -41,7 +43,9 @@ const OtpScreen = () => {
           <TextNumber placeholder={'9999'} maxLength={4} />
         </View>
         <View style={{marginTop: vh(300)}}>
-          <ButtonComponent />
+          <ButtonComponent 
+          
+          onPress={()=>props.navigation.navigate("CardDetailsStartModal")}/>
         </View>
       </View>
     </SafeAreaView>

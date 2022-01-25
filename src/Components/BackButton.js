@@ -1,12 +1,14 @@
 import {StyleSheet, Text, View, Image, TouchableOpacity} from 'react-native';
 import React from 'react';
-import {vw,vh} from '../Util/dimensions';
+import {vw, vh} from '../Util/dimensions';
 import {localImages} from '../Util/LocalImages';
 import LinearGradient from 'react-native-linear-gradient';
 
-const BackButton = () => {
+const BackButton = props => {
+  console.log('backButton props', props);
   return (
-    <View style={{
+    <View
+      style={{
         width: vw(50),
         height: vh(50),
         // borderWidth: 1,
@@ -18,10 +20,10 @@ const BackButton = () => {
           height: -5,
         },
         shadowOpacity: 0.1,
-        shadowRadius: 2,
-  
+        shadowRadius: 10,
       }}>
       <TouchableOpacity
+        onPress={() => props.navigation.goBack()}
         style={{
           width: vw(50),
           height: vw(50),
@@ -37,8 +39,9 @@ const BackButton = () => {
           },
           shadowOpacity: 0.2,
           shadowRadius: 10,
+          //   position:"absolute",opacity:0.5
         }}>
-            <LinearGradient
+        <LinearGradient
           start={{x: 0.1, y: 0.1}}
           end={{x: 0.6, y: 1.0}}
           // locations={[0, 0.5, 0.6]}
@@ -52,10 +55,10 @@ const BackButton = () => {
             alignItems: 'center',
             justifyContent: 'center',
           }}>
-        <Image
-          source={localImages.leftAngle}
-          style={{height: vw(15), width: vw(15)}}
-        />
+          <Image
+            source={localImages.leftAngle}
+            style={{height: vw(15), width: vw(15)}}
+          />
         </LinearGradient>
       </TouchableOpacity>
     </View>

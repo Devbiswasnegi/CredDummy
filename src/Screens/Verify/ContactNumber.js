@@ -12,7 +12,7 @@ import TextNumber from '../../Components/TextNumber';
 import ButtonComponent from '../../Components/ButtonComponent';
 import {localImages} from '../../Util/LocalImages';
 
-const ContactNumber = () => {
+const ContactNumber = (props) => {
   const [check, setCheck] = useState(false);
   return (
     <SafeAreaView style={{flex: 1, backgroundColor: '#202427'}}>
@@ -126,7 +126,11 @@ const ContactNumber = () => {
         </Text>
 
         <View style={{marginTop: vh(40)}}>
-          <ButtonComponent />
+          <ButtonComponent 
+          onPress={()=>{
+            check?props.navigation.navigate("OtpScreen"):null
+          }}
+          />
         </View>
       </View>
     </SafeAreaView>

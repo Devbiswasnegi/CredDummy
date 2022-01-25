@@ -15,7 +15,9 @@ const GrantPermission = () => {
   return (
     <SafeAreaView style={{flex: 1, backgroundColor: '#202427'}}>
       <View style={{marginLeft: vw(24), marginTop: vh(20)}}>
-        <TouchableOpacity>
+           
+        <TouchableOpacity style={{ width: vw(100),
+              marginLeft: screenWidth - vw(150),borderBottomWidth:1,borderColor:"white",borderStyle:"dotted"}}>
           <Text
             style={{
               color: '#CDCDCD',
@@ -24,13 +26,13 @@ const GrantPermission = () => {
               fontSize: vw(11),
               marginTop: vh(2),
               lineHeight: vh(16),
-              width: vw(100),
-              marginLeft: screenWidth - vw(150),
-              textDecorationLine:"underline"
+             
+            //   textDecorationLine:"underline"
             }}>
             Deny permission
           </Text>
         </TouchableOpacity>
+         
         <Text
           style={{
             color: '#CDCDCD',
