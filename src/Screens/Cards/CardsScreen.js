@@ -1,12 +1,12 @@
-import { StyleSheet, Text, View } from 'react-native';
+import { SafeAreaView, StyleSheet, Text, View } from 'react-native';
 import React from 'react';
+import CardTopTabBar from '../../Navigator/CardTopTabBar';
 
 const CardsScreen = () => {
   return (
-    <View>
-      <Text>CardsScreen
-CardsScreen</Text>
-    </View>
+    <SafeAreaView style={{flex:1}}>
+     <CardTopTabBar/>
+    </SafeAreaView>
   );
 };
 

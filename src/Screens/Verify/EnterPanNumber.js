@@ -8,40 +8,41 @@ import ButtonComponent from '../../Components/ButtonComponent';
 import {useSelector} from 'react-redux';
 import {login} from './startReducer';
 import {useDispatch} from 'react-redux'
-import { otp } from './action';
+import { otp,panNumberEnter } from './action';
 
-const OtpScreen = props => {
+
+const EnterPanNumber = props => {
   // console.log("optProp",props)
   const dispatch=useDispatch();
-  const [otpNumber, setOtpNumber] = useState("");
-  const {loginNo} = useSelector(state => state.login);
-  console.log('loginNo', loginNo);
+  const [panNumber, setPanNumber] = useState("");
+//   const {loginNo} = useSelector(state => state.login);
+//   console.log('loginNo', loginNo);
   return (
     <SafeAreaView style={styles.mainView}>
       <View style={{marginLeft: vw(15)}}>
         <BackButton {...props} />
       </View>
       <View style={styles.viewTwo}>
-        <Text style={styles.wehave}>we have sent you an OTP</Text>
+        <Text style={styles.wehave}>Please Enter Your Name</Text>
 
-        <Text style={styles.otpnumber}>
+        {/* <Text style={styles.otpnumber}>
           {`enter your 4 digit OTP sent on ${loginNo} to proceed`}
-        </Text>
+        </Text> */}
         <View style={styles.input}>
           <TextNumber
-            placeholder={'9999'}
-            maxLength={4}
-            onChangeText={text => setOtpNumber(text)}
+            placeholder={'PAN NUMBER'}
+            // maxLength={4}
+            onChangeText={text => setPanNumber(text)}
           />
         </View>
         <View style={{marginTop: vh(300)}}>
           <ButtonComponent
             onPress={() => {
-              otpNumber!=="" && `${otpNumber}`.length==4 ?
-              props.navigation.navigate('EnterName')
+              panNumber!=="" ?
+              props.navigation.navigate('GrantPermission')
                : null;
 
-               dispatch(otp(otpNumber))
+               dispatch(panNumberEnter(panNumber))
             }}
           />
         </View>
@@ -50,7 +51,7 @@ const OtpScreen = props => {
   );
 };
 
-export default OtpScreen;
+export default EnterPanNumber;
 
 const styles = StyleSheet.create({
   mainView: {

@@ -4,7 +4,7 @@ import {
   Text,
   TouchableOpacity,
   View,
-  Image,
+  Image,Alert
 } from 'react-native';
 import React, {useState} from 'react';
 import {vh, vw} from '../../Util/dimensions';
@@ -17,10 +17,11 @@ import { loginNumber } from './action';
 const ContactNumber = props => {
   const [check, setCheck] = useState(false);
   const [number, setNumber] = useState("");
+  console.log("number",number)
   const dispatch=useDispatch()
   return (
-    <SafeAreaView style={{flex: 1, backgroundColor: '#202427'}}>
-      <View style={{marginLeft: vw(24), marginTop: vh(30)}}>
+    <SafeAreaView style={styles.mainSafe}>
+      <View style={styles.mainView}>
         <Text style={styles.giveUs}>give us your mobile number</Text>
 
         <Text style={styles.toApply}>
@@ -31,7 +32,19 @@ const ContactNumber = props => {
           <TextNumber
             placeholder={'9999999999'}
             maxLength={10}
-            onChangeText={text => {setNumber(text)
+            onChangeText={text => 
+            
+            {
+              let re=/^[789]\d{9}$/
+              if(re.test(text)===false){
+                // Alert.alert("please enter correct number")
+                return false
+              }
+              else{
+                setNumber(text)
+                // Alert.alert("please enter correct number")
+              }
+                
             
             }}
           />
@@ -71,14 +84,16 @@ const ContactNumber = props => {
 
         <View style={{marginTop: vh(40)}}>
           <ButtonComponent
+          opacity={check}
             onPress={() => {
+              dispatch(
+                loginNumber(number)
+                )
               check && number !== '' && `${number}`.length==10
                 ? props.navigation.navigate('OtpScreen', {number: number})
                 : null;
 
-                dispatch(
-                  loginNumber(number)
-                  )
+                
             }}
           />
         </View>
@@ -151,5 +166,7 @@ const styles = StyleSheet.create({
     letterSpacing: 1,
     width: vw(300),
     marginTop: vh(7),
-  }
+  },mainSafe:{flex: 1, backgroundColor: '#202427'},
+  mainView:{marginLeft: vw(24), marginTop: vh(30)},
+
 });

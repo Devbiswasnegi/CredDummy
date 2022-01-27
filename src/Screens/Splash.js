@@ -5,11 +5,11 @@ import {vh, vw} from '../Util/dimensions';
 
 const Splash = (props) => {
 
-    // useEffect(()=>{
-    //     setTimeout(() => {
-    //         props.navigation.navigate("Onboarding")
-    //     }, 2500);
-    // })
+    useEffect(()=>{
+        setTimeout(() => {
+            props.navigation.navigate("Onboarding")
+        }, 2500);
+    })
   return (
     <SafeAreaView style={styles.mainView}>
       <Image

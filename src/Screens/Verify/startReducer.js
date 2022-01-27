@@ -14,10 +14,10 @@ export const login = (state = initialState, action) => {
       return {...state, otp: action.payload};
 
     case 'NAME':
-      return {...state, otp: action.payload};
+      return {...state, name: action.payload};
 
     case 'PAN_NUMBER':
-      return {...state, otp: action.payload};
+      return {...state, panNumber: action.payload};
 
     default:
       return state;

@@ -10,18 +10,21 @@ import OtpScreen from '../Screens/Verify/OtpScreen';
 import CardDetailsStartModal from '../Modals/CardDetailsStartModal';
 import BottomTabNavigator from './BottomTabNavigator';
 import AfterDetails from '../Screens/Verify/AfterDetails';
+import EnterName from '../Screens/Verify/EnterName';
+import EnterPanNumber from '../Screens/Verify/EnterPanNumber';
+import CreditCards from '../Components/CreditCards/CreditCards';
 
 const Stack = createNativeStackNavigator();
 
 function RootNavigation() {
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName="Splash">
-          <Stack.Screen
-            name="Splash"
-            component={Splash}
-            options={{headerShown: false}}
-          />
+      <Stack.Navigator initialRouteName="BottomTabNavigator">
+        <Stack.Screen
+          name="Splash"
+          component={Splash}
+          options={{headerShown: false}}
+        />
         <Stack.Screen
           name="Onboarding"
           component={Onboarding}
@@ -45,21 +48,36 @@ function RootNavigation() {
           options={{headerShown: false}}
         />
 
-<Stack.Screen
+        <Stack.Screen
           name="CardDetailsStartModal"
           component={CardDetailsStartModal}
           options={{headerShown: false}}
         />
 
-<Stack.Screen
+        <Stack.Screen
           name="AfterDetails"
           component={AfterDetails}
           options={{headerShown: false}}
         />
 
-<Stack.Screen
+        <Stack.Screen
           name="BottomTabNavigator"
           component={BottomTabNavigator}
+          options={{headerShown: false}}
+        />
+         <Stack.Screen
+          name="EnterName"
+          component={EnterName}
+          options={{headerShown: false}}
+        />
+         <Stack.Screen
+          name="EnterPanNumber"
+          component={EnterPanNumber}
+          options={{headerShown: false}}
+        />
+         <Stack.Screen
+          name="CreditCards"
+          component={CreditCards}
           options={{headerShown: false}}
         />
       </Stack.Navigator>
