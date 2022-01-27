@@ -5,7 +5,7 @@ import {localImages} from '../Util/LocalImages';
 import LinearGradient from 'react-native-linear-gradient';
 
 const BackButton = props => {
-  console.log('backButton props', props);
+  // console.log('backButton props', props);
   return (
     <View
       style={{

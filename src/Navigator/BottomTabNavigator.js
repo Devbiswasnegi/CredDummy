@@ -14,7 +14,7 @@ const BottomTabNavigator = () => {
   return (
     <Tab.Navigator
       screenOptions={{
-        tabBarStyle: {backgroundColor: '#202427',height:vh(80), },
+        tabBarStyle: {backgroundColor: '#202427', height: vh(80)},
         tabBarShowLabel: false,
       }}>
       <Tab.Screen
@@ -33,7 +33,11 @@ const BottomTabNavigator = () => {
                     tintColor: focused ? '#D9896A' : '#8A6D63',
                   }}
                 />
-                <Text style={{color: focused ? '#D9896A' : '#8A6D63',fontSize:vw(12)}}>
+                <Text
+                  style={{
+                    color: focused ? '#D9896A' : '#8A6D63',
+                    fontSize: vw(12),
+                  }}>
                   home
                 </Text>
               </View>
@@ -62,7 +66,11 @@ const BottomTabNavigator = () => {
                     tintColor: focused ? '#D9896A' : '#8A6D63',
                   }}
                 />
-                <Text style={{color: focused ? '#D9896A' : '#8A6D63',fontSize:vw(12)}}>
+                <Text
+                  style={{
+                    color: focused ? '#D9896A' : '#8A6D63',
+                    fontSize: vw(12),
+                  }}>
                   cards
                 </Text>
               </View>
@@ -79,7 +87,13 @@ const BottomTabNavigator = () => {
           headerShown: false,
           tabBarIcon: ({focused}) => {
             return (
-              <View style={{alignItems: 'center',backgroundColor: '#202427',marginTop:-(10),borderRadius:vw(40)}}>
+              <View
+                style={{
+                  alignItems: 'center',
+                  backgroundColor: '#202427',
+                  marginTop: -vh(10),
+                  borderRadius: vw(40),
+                }}>
                 <Image
                   source={require('../assets/Icons/detail.png')}
                   style={{
@@ -112,8 +126,12 @@ const BottomTabNavigator = () => {
                     tintColor: focused ? '#D9896A' : '#8A6D63',
                   }}
                 />
-                <Text style={{color: focused ? '#D9896A' : '#8A6D63',fontSize:vw(12)}}>
-                money
+                <Text
+                  style={{
+                    color: focused ? '#D9896A' : '#8A6D63',
+                    fontSize: vw(12),
+                  }}>
+                  money
                 </Text>
               </View>
             );
@@ -136,8 +154,12 @@ const BottomTabNavigator = () => {
                     tintColor: focused ? '#D9896A' : '#8A6D63',
                   }}
                 />
-                <Text style={{color: focused ? '#D9896A' : '#8A6D63',fontSize:vw(12)}}>
-                club
+                <Text
+                  style={{
+                    color: focused ? '#D9896A' : '#8A6D63',
+                    fontSize: vw(12),
+                  }}>
+                  club
                 </Text>
               </View>
             );

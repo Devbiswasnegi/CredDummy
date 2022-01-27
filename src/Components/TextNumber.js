@@ -6,20 +6,12 @@ const TextNumber = props => {
   return (
     <View>
       <TextInput
-        style={{
-          backgroundColor: '#202427',
-        //   borderColor: 'white',
-        //   borderWidth: 1,
-          paddingVertical:vh(12),
-          fontSize:28,
-          fontWeight:"bold",
-        color:"white"
-         
-        }}
+        style={styles.input}
         placeholder={props.placeholder}
         placeholderTextColor= '#33373A'
         keyboardType="numeric"      
         maxLength={props.maxLength}
+        onChangeText={props.onChangeText}
         />
     </View>
   );
@@ -27,4 +19,15 @@ const TextNumber = props => {
 
 export default TextNumber;
 
-const styles = StyleSheet.create({});
+const styles = StyleSheet.create({
+  input:{
+    backgroundColor: '#202427',
+  //   borderColor: 'white',
+  //   borderWidth: 1,
+    paddingVertical:vh(12),
+    fontSize:28,
+    fontWeight:"bold",
+  color:"white"
+   
+  }
+});
