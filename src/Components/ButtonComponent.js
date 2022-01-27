@@ -17,7 +17,7 @@ const ButtonComponent = (props) => {
         height: -5,
       },
       shadowOpacity: 0.1,
-      shadowRadius: 2,
+      shadowRadius: 2,elevation:5
 
     }}>
        <View style={{
@@ -32,7 +32,7 @@ const ButtonComponent = (props) => {
         height: 10,
       },
       shadowOpacity: 1,
-      shadowRadius: 15,
+      shadowRadius: 15,elevation:5
 
     }}>
       <TouchableOpacity

@@ -10,18 +10,30 @@ import React from 'react';
 import {screenWidth, vh, vw} from '../Util/dimensions';
 import {localImages} from '../Util/LocalImages';
 import CardTextInput from '../Components/CardTextInput';
+import CreditCards from '../Components/CreditCards/CreditCards';
+import { useSelector } from 'react-redux';
 
-const CardDetailsStartModal = (props) => {
+
+const CardDetailsStartModal = props => {
+  const {name}=useSelector(state=>state.login)
   return (
-    <SafeAreaView style={{flex: 1, backgroundColor: 'red'}}>
+    <SafeAreaView style={styles.mainSafe}>
+<View style={{alignSelf:"center",marginTop:vh(50)}}>
+      <CreditCards
+      backColor={["#d387ab","#e899dc"]}
+      holdername={name}
+      bankName="AXIS BANK"
+      />
+      </View>
       <View
         style={{
           flex: 1,
-          marginTop: vh(300),
+          marginTop: vh(80),
           backgroundColor: 'white',
           borderTopLeftRadius: vw(30),
           borderTopRightRadius: vw(30),
         }}>
+          
         <View
           style={{
             width: screenWidth - vw(50),
@@ -69,7 +81,7 @@ const CardDetailsStartModal = (props) => {
               flexDirection: 'row',
               marginTop: vh(40),
               alignItems: 'center',
-            //   borderWidth: 1,
+              //   borderWidth: 1,
             }}>
             <CardTextInput />
             <CardTextInput />
@@ -88,7 +100,10 @@ const CardDetailsStartModal = (props) => {
             </Text>
           </View>
 
-          <TouchableOpacity onPress={()=>{props.navigation.navigate("BottomTabNavigator")}}
+          <TouchableOpacity
+            onPress={() => {
+              props.navigation.navigate('BottomTabNavigator');
+            }}
             style={{
               width: vw(120),
               borderWidth: 1,
@@ -112,4 +127,9 @@ const CardDetailsStartModal = (props) => {
 
 export default CardDetailsStartModal;
 
-const styles = StyleSheet.create({});
+const styles = StyleSheet.create({
+  mainSafe: {
+    flex: 1,
+    backgroundColor: '#861657',
+  },
+});

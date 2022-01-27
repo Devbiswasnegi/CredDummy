@@ -4,7 +4,8 @@ import CardTopTabBar from '../../Navigator/CardTopTabBar';
 
 const CardsScreen = () => {
   return (
-    <SafeAreaView style={{flex:1}}>
+    <SafeAreaView style={{flex:1,
+      backgroundColor: '#202427',}}>
      <CardTopTabBar/>
     </SafeAreaView>
   );

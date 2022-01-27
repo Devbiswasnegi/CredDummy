@@ -11,13 +11,18 @@ import {screenWidth, vh, vw} from '../../Util/dimensions';
 import CashBack from './CashBack';
 import PaymentCard from './PaymentCard';
 import ActivateCard from './ActivateCard';
+import { useSelector } from 'react-redux';
+
 
 const HomeScreen = () => {
+  const {name}=useSelector(state=>
+    state.login)
+  console.log("name",name)
   return (
     <SafeAreaView style={styles.mainView}>
       <ScrollView showsVerticalScrollIndicator={false}>
         <View style={styles.ViewOne}>
-          <Text style={styles.nameText}>hello, Devbiswas</Text>
+          <Text style={styles.nameText}>hello, {name}</Text>
           <Text style={styles.rec}>
             here are today's recommended actions for you
           </Text>

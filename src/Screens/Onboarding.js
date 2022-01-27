@@ -72,6 +72,7 @@ const Onboarding = props => {
           alignItems: 'center',
           justifyContent: 'center',
           backgroundColor: '#202427',
+          elevation:5
         }}>
         <LinearGradient
           colors={['#385EA7', '#2E4E97']}

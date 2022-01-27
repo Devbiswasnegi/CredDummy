@@ -3,8 +3,8 @@ import React from 'react';
 import {screenWidth, vh, vw} from '../../Util/dimensions';
 import LinearGradient from 'react-native-linear-gradient';
 
-const CreditCards = (props) => {
-    console.log("props",props);
+const CreditCards = props => {
+  console.log('props', props);
   return (
     <SafeAreaView>
       <View style={{}}>
@@ -18,15 +18,15 @@ const CreditCards = (props) => {
             height: vh(190),
             borderRadius: vw(15),
           }}>
-              <View style={{padding:20}}>
-          <Text style={styles.txt}>{props.bankName}</Text>
-          <View style={{flexDirection:"row",marginTop:vh(90)}}>
-          <Text style={styles.txt}>1234 </Text>
-          <Text style={styles.txt}>XXXX </Text>
-          <Text style={styles.txt}>XXXX </Text>
-          <Text style={styles.txt}>1234</Text>
-          </View>
-          <Text style={styles.name}>Card Holder Name</Text>
+          <View style={{padding: 20}}>
+            <Text style={styles.txt}>{props.bankName}</Text>
+            <View style={{flexDirection: 'row', marginTop: vh(90)}}>
+              <Text style={styles.txt}>1234 </Text>
+              <Text style={styles.txt}>XXXX </Text>
+              <Text style={styles.txt}>XXXX </Text>
+              <Text style={styles.txt}>1234</Text>
+            </View>
+            <Text style={styles.name}>{props.holdername}</Text>
           </View>
         </LinearGradient>
       </View>
@@ -37,7 +37,15 @@ const CreditCards = (props) => {
 export default CreditCards;
 
 const styles = StyleSheet.create({
-    txt:{fontWeight:"bold",color:"white",fontSize:vw(14)}
-   ,
-   name:{fontWeight:"bold",color:"white",fontSize:vw(14),marginTop:10}
+  txt: {
+    fontWeight: 'bold',
+    color: 'white',
+    fontSize: vw(14),
+  },
+  name: {
+    fontWeight: 'bold',
+    color: 'white',
+    fontSize: vw(14),
+    marginTop: 10,
+  },
 });

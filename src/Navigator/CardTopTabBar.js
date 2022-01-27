@@ -12,6 +12,7 @@ const TopTab = createMaterialTopTabNavigator();
 
 const CardTopTabBar = () => {
   return (
+   
     <TopTab.Navigator
       screenOptions={{
         tabBarStyle: {backgroundColor: '#202427', height: vh(40),},
@@ -107,6 +108,7 @@ const CardTopTabBar = () => {
         }}
       />
     </TopTab.Navigator>
+    
   );
 };
 

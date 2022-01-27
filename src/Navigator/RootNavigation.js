@@ -13,13 +13,15 @@ import AfterDetails from '../Screens/Verify/AfterDetails';
 import EnterName from '../Screens/Verify/EnterName';
 import EnterPanNumber from '../Screens/Verify/EnterPanNumber';
 import CreditCards from '../Components/CreditCards/CreditCards';
+import MiscOne from '../MISC/MiscOne';
+import MiscTwo from '../MISC/MiscTwo';
 
 const Stack = createNativeStackNavigator();
 
 function RootNavigation() {
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName="BottomTabNavigator">
+      <Stack.Navigator initialRouteName="Splash">
         <Stack.Screen
           name="Splash"
           component={Splash}
@@ -78,6 +80,18 @@ function RootNavigation() {
          <Stack.Screen
           name="CreditCards"
           component={CreditCards}
+          options={{headerShown: false}}
+        />
+
+<Stack.Screen
+          name="MiscOne"
+          component={MiscOne}
+          options={{headerShown: false}}
+        />
+
+<Stack.Screen
+          name="MiscTwo"
+          component={MiscTwo}
           options={{headerShown: false}}
         />
       </Stack.Navigator>
