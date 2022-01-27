@@ -1,18 +1,25 @@
-const initialState={
-    loginNo:"",
-    otp:""
-}
+const initialState = {
+  loginNo: '',
+  otp: '',
+  name: '',
+  panNumber: '',
+};
 
-export const login=(state=initialState,action)=>{
-switch(action.type){
-    case "LOGINNUMBER":
-        return {...state,loginNo:action.payload}
+export const login = (state = initialState, action) => {
+  switch (action.type) {
+    case 'LOGINNUMBER':
+      return {...state, loginNo: action.payload};
 
-        case 'OTP':
-        return {...state,otp:action.payload}
+    case 'OTP':
+      return {...state, otp: action.payload};
 
-         default:
-            return state;
+    case 'NAME':
+      return {...state, otp: action.payload};
 
-}
-}
+    case 'PAN_NUMBER':
+      return {...state, otp: action.payload};
+
+    default:
+      return state;
+  }
+};

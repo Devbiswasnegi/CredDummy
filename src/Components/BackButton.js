@@ -16,7 +16,7 @@ const BackButton = props => {
         // borderRadius: vw(25),
         shadowColor: 'white',
         shadowOffset: {
-          width: -4,
+          width: -5,
           height: -5,
         },
         shadowOpacity: 0.1,
@@ -32,10 +32,10 @@ const BackButton = props => {
           alignItems: 'center',
           justifyContent: 'center',
           borderRadius: vw(25),
-          shadowColor: 'white',
+          shadowColor: 'black',
           shadowOffset: {
-            width: -5,
-            height: -5,
+            width: 5,
+            height: 5,
           },
           shadowOpacity: 0.2,
           shadowRadius: 10,

@@ -51,17 +51,19 @@ const ButtonComponent = (props) => {
             height: vh(45),
             // borderWidth: 1,
             // borderColor: 'white',
+            // opacity:0.8,
             borderRadius: vw(25),
             alignItems: 'center',
             justifyContent: 'center',
           }}>
           <Text
             style={{
-              color: '#E6C6B1',
+              // color: '#E6C6B1',
+              color:"#D9896A",
               fontWeight: 'bold',
               letterSpacing: 0.8,
               fontSize: vw(14),
-              opacity:0.6
+              // opacity:0.6
             }}>
             Agree & continue
           </Text>

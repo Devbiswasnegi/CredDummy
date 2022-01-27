@@ -5,17 +5,19 @@ import {vh, vw} from '../Util/dimensions';
 
 const Splash = (props) => {
 
-    useEffect(()=>{
-        setTimeout(() => {
-            props.navigation.navigate("Onboarding")
-        }, 2500);
-    })
+    // useEffect(()=>{
+    //     setTimeout(() => {
+    //         props.navigation.navigate("Onboarding")
+    //     }, 2500);
+    // })
   return (
     <SafeAreaView style={styles.mainView}>
       <Image
+     
         source={require('../assets/Gif/credlogo.gif')}
+        // source={require('../assets/Gif/afterDetail.gif')}
         style={styles.credLogo}
-      />
+      ></Image>
       <Text style={styles.credText}>CRED</Text>
     </SafeAreaView>
   );

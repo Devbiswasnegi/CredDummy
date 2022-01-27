@@ -61,11 +61,11 @@ const ButtonTrue = (props) => {
           }}>
           <Text
             style={{
-              color: '#E6C6B1',
+              color: '#D9896A',
               fontWeight: 'bold',
               letterSpacing: 0.8,
               fontSize: vw(14),
-              opacity:0.6
+              // opacity:0.6
             }}>
            Grant permission
           </Text>
