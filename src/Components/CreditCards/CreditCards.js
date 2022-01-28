@@ -4,7 +4,7 @@ import {screenWidth, vh, vw} from '../../Util/dimensions';
 import LinearGradient from 'react-native-linear-gradient';
 
 const CreditCards = props => {
-  console.log('props', props);
+  // console.log('props', props);
   return (
     <SafeAreaView>
       <View style={{}}>
