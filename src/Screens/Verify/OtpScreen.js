@@ -9,13 +9,29 @@ import {useSelector} from 'react-redux';
 import {login} from './startReducer';
 import {useDispatch} from 'react-redux'
 import { otp } from './action';
+import auth from '@react-native-firebase/auth';
 
 const OtpScreen = props => {
   // console.log("optProp",props)
   const dispatch=useDispatch();
   const [otpNumber, setOtpNumber] = useState("");
   const {loginNo} = useSelector(state => state.login);
-  console.log('loginNo', loginNo);
+  console.log('loginNo', props.route.params.confirmation.confirm);
+  const otpverify=async() => {
+
+    try {
+      //  await confirm.confirm(otpNumber);
+      await props.route.params.confirmation.confirm(otpNumber)
+      otpNumber!=="" && `${otpNumber}`.length==6 ?
+      props.navigation.navigate('EnterName')
+       : null;
+  
+       dispatch(otp(otpNumber))
+    } catch (error) {
+      console.log('Invalid code.');
+    }
+   
+  }
   return (
     <SafeAreaView style={styles.mainView}>
       <View style={{marginLeft: vw(15)}}>
@@ -29,20 +45,14 @@ const OtpScreen = props => {
         </Text>
         <View style={styles.input}>
           <TextNumber
-            placeholder={'9999'}
-            maxLength={4}
+            placeholder={'999999'}
+            maxLength={6}
             onChangeText={text => setOtpNumber(text)}
           />
         </View>
         <View style={{marginTop: vh(300)}}>
           <ButtonComponent
-            onPress={() => {
-              otpNumber!=="" && `${otpNumber}`.length==4 ?
-              props.navigation.navigate('EnterName')
-               : null;
-
-               dispatch(otp(otpNumber))
-            }}
+            onPress={otpverify}
           />
         </View>
       </View>

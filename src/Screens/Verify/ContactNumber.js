@@ -4,21 +4,42 @@ import {
   Text,
   TouchableOpacity,
   View,
-  Image,Alert
+  Image,
+  Alert,
 } from 'react-native';
 import React, {useState} from 'react';
 import {vh, vw} from '../../Util/dimensions';
 import TextNumber from '../../Components/TextNumber';
 import ButtonComponent from '../../Components/ButtonComponent';
 import {localImages} from '../../Util/LocalImages';
-import {useDispatch } from 'react-redux'
-import { loginNumber } from './action';
+import {useDispatch} from 'react-redux';
+import {loginNumber} from './action';
+import auth from '@react-native-firebase/auth';
 
 const ContactNumber = props => {
   const [check, setCheck] = useState(false);
-  const [number, setNumber] = useState("");
-  console.log("number",number)
-  const dispatch=useDispatch()
+  const [number, setNumber] = useState('');
+  const [confirm, setConfirm] = useState(null);
+  const dispatch = useDispatch();
+
+  const pressButton = async () => {
+    console.log('number', '+91' + number);
+    try {
+      const confirmation = await auth().signInWithPhoneNumber('+91' + number);
+      // setConfirm(confirmation);
+      console.log('confirmation', confirmation);
+
+      dispatch(loginNumber(number));
+      check && number !== '' && `${number}`.length < 15
+        ? props.navigation.navigate('OtpScreen', {
+            number: number,
+            confirmation: confirmation,
+          })
+        : null;
+    } catch (err) {
+      console.log('err', err);
+    }
+  };
   return (
     <SafeAreaView style={styles.mainSafe}>
       <View style={styles.mainView}>
@@ -31,21 +52,16 @@ const ContactNumber = props => {
         <View style={{paddingVertical: vh(20)}}>
           <TextNumber
             placeholder={'9999999999'}
-            maxLength={10}
-            onChangeText={text => 
-            
-            {
-              let re=/^[789]\d{9}$/
-              if(re.test(text)===false){
+            // maxLength={10}
+            onChangeText={text => {
+              let re = /^[789]\d{9}$/;
+              if (re.test(text) === false) {
                 // Alert.alert("please enter correct number")
-                return false
+                return false;
+              } else {
+                setNumber(text);
+                // Alert.alert('please enter correct number');
               }
-              else{
-                setNumber(text)
-                // Alert.alert("please enter correct number")
-              }
-                
-            
             }}
           />
         </View>
@@ -76,26 +92,13 @@ const ContactNumber = props => {
           </TouchableOpacity>
         </View>
 
-        <Text
-          style={styles.weneed}>
+        <Text style={styles.weneed}>
           we need to check if you are a credit card holder and are above our
           accepted credit score threshold. it will not impact your credit score.
         </Text>
 
         <View style={{marginTop: vh(40)}}>
-          <ButtonComponent
-          opacity={check}
-            onPress={() => {
-              dispatch(
-                loginNumber(number)
-                )
-              check && number !== '' && `${number}`.length==10
-                ? props.navigation.navigate('OtpScreen', {number: number})
-                : null;
-
-                
-            }}
-          />
+          <ButtonComponent opacity={check} onPress={pressButton} />
         </View>
       </View>
     </SafeAreaView>
@@ -159,14 +162,14 @@ const styles = StyleSheet.create({
     bottom: 0,
     left: 115,
   },
-  weneed:{
+  weneed: {
     color: '#55575A',
 
     fontSize: vw(12),
     letterSpacing: 1,
     width: vw(300),
     marginTop: vh(7),
-  },mainSafe:{flex: 1, backgroundColor: '#202427'},
-  mainView:{marginLeft: vw(24), marginTop: vh(30)},
-
+  },
+  mainSafe: {flex: 1, backgroundColor: '#202427'},
+  mainView: {marginLeft: vw(24), marginTop: vh(30)},
 });

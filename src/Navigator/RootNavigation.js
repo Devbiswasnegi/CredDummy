@@ -21,7 +21,7 @@ const Stack = createNativeStackNavigator();
 function RootNavigation() {
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName="CardDetailsStartModal">
+      <Stack.Navigator initialRouteName="ContactNumber">
         <Stack.Screen
           name="Splash"
           component={Splash}
