@@ -1,12 +1,11 @@
-import { StyleSheet, Text, View } from 'react-native';
+import {StyleSheet, Text, View} from 'react-native';
 import React from 'react';
+import {screenWidth} from '../../Util/dimensions';
+import DetailModal from '../../Modals/DetailModal';
 
 const Details = () => {
   return (
-    <View>
-      <Text>Details
-Details</Text>
-    </View>
+    <DetailModal/>
   );
 };
 

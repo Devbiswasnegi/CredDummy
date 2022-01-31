@@ -1,25 +1,62 @@
 import {
+  Animated,
   SafeAreaView,
   ScrollView,
   ScrollViewBase,
   StyleSheet,
   Text,
   View,
+  PanResponder,
 } from 'react-native';
-import React from 'react';
+import React, {useRef} from 'react';
 import {screenWidth, vh, vw} from '../../Util/dimensions';
 import CashBack from './CashBack';
 import PaymentCard from './PaymentCard';
 import ActivateCard from './ActivateCard';
-import { useSelector } from 'react-redux';
-
+import {useSelector} from 'react-redux';
+import {panNumberEnter} from '../Verify/action';
 
 const HomeScreen = () => {
-  const {name}=useSelector(state=>
-    state.login)
-  console.log("name",name)
+  const slide = useRef(new Animated.ValueXY()).current;
+
+  const panResponder = useRef(
+    PanResponder.create({
+      onMoveShouldSetPanResponder: () => true,
+      onPanResponderMove: (e, gestureState) => {
+        console.log('gestureState', gestureState);
+      },
+      onPanResponderGrant: () => {
+        pan.setOffset({
+          x: slide.x._value,
+          y: slide.y._value,
+        });
+      },
+      onPanResponderMove: Animated.event([null, {dx: slide.x, dy: slide.y}], {
+        useNativeDriver: true,
+      }),
+      onPanResponderRelease: () => {
+        pan.flattenOffset();
+      },
+    }),
+  );
+
+  // const {name} = useSelector(state => state.login);
+  // console.log('name', name);
   return (
     <SafeAreaView style={styles.mainView}>
+      <Animated.View
+        {...panResponder.panHandlers}
+        style={{
+          height: 100,
+          width: 200,
+          borderColor: 'white',
+          borderWidth: 1,
+          transform: [{translateX: slide.x}, {translateY: slide.y}],
+          // transform:[{
+          //   translate:slide.x
+
+          // }]
+        }}></Animated.View>
       <ScrollView showsVerticalScrollIndicator={false}>
         <View style={styles.ViewOne}>
           <Text style={styles.nameText}>hello, {name}</Text>
@@ -33,6 +70,7 @@ const HomeScreen = () => {
             Img={require('../../assets/Icons/debit-card.png')}
             backgroundColor="yellow"
           />
+
           <PaymentCard
             heading="clear your upcoming bills to earn coins"
             BankName="Axis Bank"

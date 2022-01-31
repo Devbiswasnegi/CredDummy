@@ -27,11 +27,10 @@ const BottomTabNavigator = () => {
               <View style={{alignItems: 'center'}}>
                 <Image
                   source={require('../assets/Icons/home.png')}
-                  style={{
-                    width: vw(20),
-                    height: vw(20),
-                    tintColor: focused ? '#D9896A' : '#8A6D63',
-                  }}
+                  style={[
+                    styles.Img,
+                    {tintColor: focused ? '#D9896A' : '#8A6D63'},
+                  ]}
                 />
                 <Text
                   style={{
@@ -60,11 +59,10 @@ const BottomTabNavigator = () => {
               <View style={{alignItems: 'center'}}>
                 <Image
                   source={require('../assets/Icons/creditcardbottom.png')}
-                  style={{
-                    width: vw(20),
-                    height: vw(20),
-                    tintColor: focused ? '#D9896A' : '#8A6D63',
-                  }}
+                  style={[
+                    styles.Img,
+                    {tintColor: focused ? '#D9896A' : '#8A6D63'},
+                  ]}
                 />
                 <Text
                   style={{
@@ -120,11 +118,10 @@ const BottomTabNavigator = () => {
               <View style={{alignItems: 'center'}}>
                 <Image
                   source={require('../assets/Icons/money.png')}
-                  style={{
-                    width: vw(20),
-                    height: vw(20),
-                    tintColor: focused ? '#D9896A' : '#8A6D63',
-                  }}
+                  style={[
+                    styles.Img,
+                    {tintColor: focused ? '#D9896A' : '#8A6D63'},
+                  ]}
                 />
                 <Text
                   style={{
@@ -148,11 +145,10 @@ const BottomTabNavigator = () => {
               <View style={{alignItems: 'center'}}>
                 <Image
                   source={require('../assets/Icons/suitcase.png')}
-                  style={{
-                    width: vw(20),
-                    height: vw(20),
-                    tintColor: focused ? '#D9896A' : '#8A6D63',
-                  }}
+                  style={[
+                    styles.Img,
+                    {tintColor: focused ? '#D9896A' : '#8A6D63'},
+                  ]}
                 />
                 <Text
                   style={{
@@ -172,4 +168,9 @@ const BottomTabNavigator = () => {
 
 export default BottomTabNavigator;
 
-const styles = StyleSheet.create({});
+const styles = StyleSheet.create({
+  Img: {
+    width: vw(20),
+    height: vw(20),
+  },
+});

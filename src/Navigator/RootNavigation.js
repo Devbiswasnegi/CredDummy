@@ -21,7 +21,7 @@ const Stack = createNativeStackNavigator();
 function RootNavigation() {
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName="ContactNumber">
+      <Stack.Navigator initialRouteName="MiscOne">
         <Stack.Screen
           name="Splash"
           component={Splash}

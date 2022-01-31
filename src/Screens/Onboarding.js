@@ -1,17 +1,43 @@
 import {
+  Animated,
   Image,
   SafeAreaView,
   StyleSheet,
   Text,
   TouchableOpacity,
   View,
+  Easing,
 } from 'react-native';
-import React from 'react';
+import React, {useEffect, useRef} from 'react';
 import {vw, vh} from '../Util/dimensions';
 import LinearGradient from 'react-native-linear-gradient';
 import {localImages} from '../Util/LocalImages';
 
 const Onboarding = props => {
+  // const anim = useRef(new Animated.Value(0)).current;
+  const anim = new Animated.Value(0);
+
+  useEffect(() => {
+    Animated.loop(
+      // Animated.sequence([
+        Animated.timing(anim, {
+          toValue: 1,
+          useNativeDriver: true,
+
+          duration: 12000,
+          // easing: Easing.linear,
+        }),
+      // ]),
+      {iterations: 10},
+    )
+    .start();
+  });
+
+  const rotateImg = anim.interpolate({
+    inputRange: [0, 1],
+    outputRange: ['0deg', '1440deg'],
+  });
+
   return (
     <SafeAreaView
       style={{
@@ -22,23 +48,23 @@ const Onboarding = props => {
       }}>
       <View
         style={{
-            // borderWidth: 1,
-            // borderColor: 'white',
+          // borderWidth: 1,
+          // borderColor: 'white',
           alignItems: 'center',
           justifyContent: 'center',
           paddingVertical: vh(80),
         }}>
-        <Image
+        <Animated.Image
           source={localImages.CircleCard}
-          style={{flex: 0.7}}
+          style={{flex: 0.7, transform: [{rotate: rotateImg}]}}
           resizeMode="contain"
         />
 
-        <Image
+        {/* <Animated.Image
           source={localImages.cardFrame}
-          style={{position: 'absolute', flex: 0.3}}
+          style={{position: 'absolute', flex: 0.3, transform: [{rotate: rotateImg}]}}
           resizeMode="contain"
-        />
+        /> */}
       </View>
       <Text
         style={{
@@ -72,7 +98,7 @@ const Onboarding = props => {
           alignItems: 'center',
           justifyContent: 'center',
           backgroundColor: '#202427',
-          elevation:5
+          elevation: 5,
         }}>
         <LinearGradient
           colors={['#385EA7', '#2E4E97']}

@@ -1,23 +1,36 @@
 import {
+  FlatList,
   SafeAreaView,
   StyleSheet,
   Text,
   TouchableOpacity,
   View,
 } from 'react-native';
-import React from 'react';
+import React, {useState} from 'react';
 
 const MiscOne = props => {
   console.log('propsprops', props);
   let t = 50;
-
+  const [d,setD]=useState([])
+  const [data, setData] = useState([]);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [last, setLast] = useState(0);
   const onpress = () => {
-    props.ram(t); // const re=(t)=>{
-    // console.log("callback",t)
+    // props.ram(t);
+    // const re=(t)=>{
+    //  console.log("callback",t)
     // setName(t)
     //  }
+    fetch(`https://jsonplaceholder.typicode.com/posts?_page=${currentPage}`)
+      .then(res => res.json())
+      .then(res => {
+        // setD(res)
+        setData([...data,...res]);
+        setCurrentPage(currentPage + 1);
+      })
+      .catch();
   };
-
+  console.log('data', data);
   return (
     <SafeAreaView style={{backgroundColor: 'white', flex: 1}}>
       <TouchableOpacity
@@ -25,8 +38,9 @@ const MiscOne = props => {
         style={{
           height: 300,
           width: 300,
-        //   borderWidth: 1,
-justifyContent:"center",alignItems:"center"
+          //   borderWidth: 1,
+          justifyContent: 'center',
+          alignItems: 'center',
           //   borderColor: 'white',
         }}>
         <View
@@ -43,6 +57,21 @@ justifyContent:"center",alignItems:"center"
           {/* <Text>{props.label}</Text> */}
         </View>
       </TouchableOpacity>
+
+      <FlatList
+        data={data}
+        // extraData={data}
+        renderItem={({item, index}) => {
+          // console.log(item);
+          return (
+            <View style={{borderWidth: 1}}>
+              <Text>
+                {item.id}. {item.title}
+              </Text>
+            </View>
+          );
+        }}
+      />
     </SafeAreaView>
   );
 };

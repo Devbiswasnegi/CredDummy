@@ -5,18 +5,18 @@ import MiscOne from './MiscOne';
 const MiscTwo = () => {
     const [name,setName]=useState("")
 
-    const re=(t)=>{
-        console.log("callback",t)
-        setName(t)
-    }
+    // const re=(t)=>{
+    //     console.log("callback",t)
+    //     setName(t)
+    // }
   return (
     <SafeAreaView>
       <Text>MiscTwo</Text>
 
-      <MiscOne
+      {/* <MiscOne
       label="click"
       ram={re}
-      />
+      /> */}
 
       <Text>{name}</Text>
     </SafeAreaView>
