@@ -1,11 +1,30 @@
-import {StyleSheet, Text, View, Image} from 'react-native';
-import React from 'react';
+import {StyleSheet, Text, View, Image, Animated, PanResponder} from 'react-native';
+import React, { useRef } from 'react';
 import BlackButton from '../../Components/BlackButton';
 import {screenWidth, vh, vw} from '../../Util/dimensions';
 
 const CashBack = (props) => {
+  const slide = useRef(new Animated.ValueXY({x: 0, y: 0})).current;
+
+  const panResponder = useRef(
+    PanResponder.create({
+      onMoveShouldSetPanResponder: () => true,
+      // onPanResponderMove: (e, gestureState) => {
+      //   // console.log('gestureState', gestureState);
+       
+      // },
+      
+      onPanResponderMove: Animated.event([null, {dx: slide.x, dy: slide.y}], {
+        
+      }),
+      onPanResponderRelease: () => {
+        Animated.spring(slide, {toValue: {x: 0, y: 0},useNativeDriver: true,}).start();
+      },
+    }),
+  ).current;
   return (
-    <View
+    <Animated.View
+    {...panResponder.panHandlers}
       style={{
         width: screenWidth - vw(40),
         borderWidth: 1,
@@ -13,7 +32,8 @@ const CashBack = (props) => {
         backgroundColor: props.backgroundColor,
         borderRadius: vw(20),
         height: vw(180),
-        marginVertical:vh(10)
+        marginVertical:vh(10),
+        transform: [{translateX: slide.x}],
       }}>
       <Text
         style={{
@@ -43,7 +63,7 @@ const CashBack = (props) => {
           }}
         />
       </View>
-    </View>
+    </Animated.View>
   );
 };
 

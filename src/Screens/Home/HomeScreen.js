@@ -17,46 +17,42 @@ import {useSelector} from 'react-redux';
 import {panNumberEnter} from '../Verify/action';
 
 const HomeScreen = () => {
-  const slide = useRef(new Animated.ValueXY()).current;
+  const slide = useRef(new Animated.ValueXY({x: 0, y: 0})).current;
 
   const panResponder = useRef(
     PanResponder.create({
       onMoveShouldSetPanResponder: () => true,
-      onPanResponderMove: (e, gestureState) => {
-        console.log('gestureState', gestureState);
-      },
-      onPanResponderGrant: () => {
-        pan.setOffset({
-          x: slide.x._value,
-          y: slide.y._value,
-        });
-      },
+      // onPanResponderMove: (e, gestureState) => {
+      //   // console.log('gestureState', gestureState);
+       
+      // },
+      
       onPanResponderMove: Animated.event([null, {dx: slide.x, dy: slide.y}], {
-        useNativeDriver: true,
+        
       }),
       onPanResponderRelease: () => {
-        pan.flattenOffset();
+        Animated.spring(slide, {toValue: {x: 0, y: 0},useNativeDriver: true,}).start();
       },
     }),
-  );
+  ).current;
 
   // const {name} = useSelector(state => state.login);
-  // console.log('name', name);
+  // console.log('name', panResponder.panHandlers);
   return (
     <SafeAreaView style={styles.mainView}>
-      <Animated.View
-        {...panResponder.panHandlers}
+      {/* <Animated.View
+        // {...panResponder.panHandlers}
         style={{
           height: 100,
           width: 200,
           borderColor: 'white',
           borderWidth: 1,
-          transform: [{translateX: slide.x}, {translateY: slide.y}],
+          transform: [{translateX: slide.x}],
           // transform:[{
           //   translate:slide.x
 
           // }]
-        }}></Animated.View>
+        }}></Animated.View> */}
       <ScrollView showsVerticalScrollIndicator={false}>
         <View style={styles.ViewOne}>
           <Text style={styles.nameText}>hello, {name}</Text>
