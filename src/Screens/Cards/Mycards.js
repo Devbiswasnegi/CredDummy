@@ -3,7 +3,7 @@ import React from 'react';
 import {screenWidth, vh, vw} from '../../Util/dimensions';
 import MyCardComponents from '../../Components/MyCardComponents';
 
-const Mycards = () => {
+const Mycards = (props) => {
   return (
     <SafeAreaView style={styles.mainSafe}>
       <ScrollView
@@ -19,6 +19,7 @@ const Mycards = () => {
           <MyCardComponents
             backColor={['#4c669f', '#3b5998', '#192f6a']}
             bankName="AXIS BANK"
+            continue={()=>props.navigation.navigate("Details")}
           />
         </View>
         <MyCardComponents

@@ -15,6 +15,8 @@ import EnterPanNumber from '../Screens/Verify/EnterPanNumber';
 import CreditCards from '../Components/CreditCards/CreditCards';
 import MiscOne from '../MISC/MiscOne';
 import MiscTwo from '../MISC/MiscTwo';
+import DetailModal from '../Modals/DetailModal';
+import Details from '../Screens/Details/Details';
 
 const Stack = createNativeStackNavigator();
 
@@ -94,6 +96,12 @@ function RootNavigation() {
           component={MiscTwo}
           options={{headerShown: false}}
         />
+
+{/* <Stack.Screen
+          name="Details"
+          component={Details}
+          options={{headerShown: false,presentation:"transparentModal"}}
+        /> */}
       </Stack.Navigator>
     </NavigationContainer>
   );

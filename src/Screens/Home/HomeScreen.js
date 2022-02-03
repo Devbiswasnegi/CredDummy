@@ -55,7 +55,9 @@ const HomeScreen = () => {
         }}></Animated.View> */}
       <ScrollView showsVerticalScrollIndicator={false}>
         <View style={styles.ViewOne}>
-          <Text style={styles.nameText}>hello, {name}</Text>
+          <Text style={styles.nameText}>hello, 
+          {/* {name} */}
+          </Text>
           <Text style={styles.rec}>
             here are today's recommended actions for you
           </Text>

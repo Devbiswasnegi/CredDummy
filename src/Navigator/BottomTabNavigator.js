@@ -1,5 +1,5 @@
-import {Image, StyleSheet, Text, View} from 'react-native';
-import React from 'react';
+import {Image, StyleSheet, Text, TouchableOpacity, View} from 'react-native';
+import React, {useState} from 'react';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import HomeScreen from '../Screens/Home/HomeScreen';
 import CardsScreen from '../Screens/Cards/CardsScreen';
@@ -10,7 +10,8 @@ import {vh, vw} from '../Util/dimensions';
 
 const Tab = createBottomTabNavigator();
 
-const BottomTabNavigator = () => {
+const BottomTabNavigator = props => {
+  const [open, setOpen] = useState(true);
   return (
     <Tab.Navigator
       screenOptions={{
@@ -64,6 +65,7 @@ const BottomTabNavigator = () => {
                     {tintColor: focused ? '#D9896A' : '#8A6D63'},
                   ]}
                 />
+
                 <Text
                   style={{
                     color: focused ? '#D9896A' : '#8A6D63',
@@ -92,17 +94,24 @@ const BottomTabNavigator = () => {
                   marginTop: -vh(10),
                   borderRadius: vw(40),
                 }}>
-                <Image
-                  source={require('../assets/Icons/detail.png')}
-                  style={{
-                    width: vw(80),
-                    height: vw(80),
-                    tintColor: focused ? '#D9896A' : '#8A6D63',
-                  }}
-                />
-                {/* <Text style={{color: focused ? '#D9896A' : '#8A6D63',fontSize:vw(12)}}>
-                  cards
-                </Text> */}
+                <TouchableOpacity
+                  onPress={() => {
+                    setOpen(!open)
+                    open
+                      ? props.navigation.navigate('Details')
+                      // : props.navigation.navigate('cards')
+                      :props.navigation.goBack()
+                  }}>
+                  <Image
+                    source={require('../assets/Icons/detail.png')}
+                    style={{
+                      width: vw(80),
+                      height: vw(80),
+                      tintColor: focused ? '#D9896A' : '#8A6D63',
+                    }}
+                  />
+                </TouchableOpacity>
+               
               </View>
             );
           },

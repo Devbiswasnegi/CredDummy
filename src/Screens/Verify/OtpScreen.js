@@ -16,20 +16,23 @@ const OtpScreen = props => {
   const dispatch=useDispatch();
   const [otpNumber, setOtpNumber] = useState("");
   const {loginNo} = useSelector(state => state.login);
-  console.log('loginNo', props.route.params.confirmation.confirm);
+  // console.log('loginNo', props.route.params.confirmation.confirm);
   const otpverify=async() => {
 
-    try {
-      //  await confirm.confirm(otpNumber);
-      await props.route.params.confirmation.confirm(otpNumber)
-      otpNumber!=="" && `${otpNumber}`.length==6 ?
-      props.navigation.navigate('EnterName')
-       : null;
+    // try {
+    //   //  await confirm.confirm(otpNumber);
+    //   await props.route.params.confirmation.confirm(otpNumber)
+    //   otpNumber!=="" && `${otpNumber}`.length==6 ?
+    //   props.navigation.navigate('EnterName')
+    //    : null;
   
-       dispatch(otp(otpNumber))
-    } catch (error) {
-      console.log('Invalid code.');
-    }
+    //    dispatch(otp(otpNumber))
+    // } catch (error) {
+    //   console.log('Invalid code.');
+    // }
+
+    dispatch(otp(otpNumber))
+    props.navigation.navigate('EnterName')
    
   }
   return (

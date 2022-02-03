@@ -10,6 +10,29 @@ import {
 import React from 'react';
 import {screenWidth, vh, vw} from '../Util/dimensions';
 
+const data = [
+  {
+    id: 1,
+    title: 'unbilled',
+    img: require('../assets/Icons/document.png'),
+  },
+  {
+    id: 2,
+    title: 'bank accounts',
+    img: require('../assets/Icons/bank.png'),
+  },
+  {
+    id: 3,
+    title: 'store',
+    img: require('../assets/Icons/handbag.png'),
+  },
+  {
+    id: 4,
+    title: 'credit score',
+    img: require('../assets/Icons/business-credit-score.png'),
+  },
+];
+
 const DetailModal = () => {
   return (
     <SafeAreaView
@@ -18,30 +41,29 @@ const DetailModal = () => {
         flex: 1,
         width: screenWidth,
         borderWidth: 1,
-        backgroundColor: 'yellow',
+        backgroundColor: '#00000090',
       }}>
       <View
         style={{
           marginTop: 100,
-          backgroundColor: 'red',
+          backgroundColor: '#eaeaec',
           flex: 1,
-          borderTopEndRadius: vw(20),
-          borderTopLeftRadius: vw(20),
+          borderTopEndRadius: vw(30),
+          borderTopLeftRadius: vw(30),
           padding: vw(20),
-        //   flexWrap:"wrap",
-          
+
+          //   flexWrap:"wrap",
         }}>
         <FlatList
-        // style={{flexWrap:"wrap"}}
-        //   horizontal
-        numColumns={4}
-          data={[1, 2, 3, 4, 5, 6,7]}
+          // style={{flexWrap:"wrap"}}
+          //   horizontal
+          numColumns={4}
+          data={data}
           keyExtractor={item => item.toString()}
           renderItem={({item, index}) => {
             return (
-              <View style={{margin:10}}>
-                <Cell
-                no={item} />
+              <View style={{margin: vw(10)}}>
+                <Cell title={item.title} img={item.img} />
               </View>
             );
           }}
@@ -51,30 +73,31 @@ const DetailModal = () => {
   );
 };
 
-const Cell = (props) => {
+const Cell = props => {
   return (
     <View
       style={{
         alignItems: 'center',
         width: vw(60),
         height: vh(90),
-        borderWidth: 1,
+        // borderWidth: 1,
         // margin: 10,
       }}>
       <TouchableOpacity
         style={{
-          width: vw(60),
-          height: vw(70),
-          //   borderWidth: 1,
+          width: vw(65),
+          height: vw(65),
+          // borderWidth: 1,
           alignItems: 'center',
           justifyContent: 'center',
+          borderRadius: vw(12),
+          backgroundColor: 'white',
         }}>
-        <Image
-          source={require('../assets/Icons/check.png')}
-          style={{width: vw(30), height: vw(30)}}
-        />
+        <Image source={props.img} style={{width: vw(30), height: vw(30)}} />
       </TouchableOpacity>
-      <Text style={{}}>{props.no}unbilled</Text>
+      <Text style={{textAlign: 'center', marginTop: vh(8), fontWeight: '500'}}>
+        {props.title}
+      </Text>
     </View>
   );
 };

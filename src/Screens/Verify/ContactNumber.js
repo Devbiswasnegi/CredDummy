@@ -23,22 +23,28 @@ const ContactNumber = props => {
   const dispatch = useDispatch();
 
   const pressButton = async () => {
-    console.log('number', '+91' + number);
-    try {
-      const confirmation = await auth().signInWithPhoneNumber('+91' + number);
-      // setConfirm(confirmation);
-      console.log('confirmation', confirmation);
+    // console.log('number', '+91' + number);
+    // try {
+    //   const confirmation = await auth().signInWithPhoneNumber('+91' + number);
+    //   // setConfirm(confirmation);
+    //   console.log('confirmation', confirmation);
 
-      dispatch(loginNumber(number));
-      check && number !== '' && `${number}`.length < 15
-        ? props.navigation.navigate('OtpScreen', {
-            number: number,
-            confirmation: confirmation,
-          })
-        : null;
-    } catch (err) {
-      console.log('err', err);
-    }
+    //   dispatch(loginNumber(number));
+    //   check && number !== '' && `${number}`.length < 15
+    //     ? props.navigation.navigate('OtpScreen', {
+    //         number: number,
+    //         confirmation: confirmation,
+    //       })
+    //     : null;
+    // } catch (err) {
+    //   console.log('err', err);
+    // }
+
+    dispatch(loginNumber(number));
+    props.navigation.navigate('OtpScreen', {
+              number: number,
+              // confirmation: confirmation,
+            })
   };
   return (
     <SafeAreaView style={styles.mainSafe}>
@@ -52,7 +58,7 @@ const ContactNumber = props => {
         <View style={{paddingVertical: vh(20)}}>
           <TextNumber
             placeholder={'9999999999'}
-            // maxLength={10}
+            maxLength={10}
             onChangeText={text => {
               let re = /^[789]\d{9}$/;
               if (re.test(text) === false) {

@@ -3,7 +3,7 @@ import React from 'react';
 import { vh, vw } from '../Util/dimensions';
 import LinearGradient from 'react-native-linear-gradient';
 
-const SmallBlueButton = () => {
+const SmallBlueButton = (props) => {
   return (
     <View
         style={{
@@ -31,7 +31,7 @@ const SmallBlueButton = () => {
           style={{width: vw(130), height: vh(40), borderRadius: vw(26)}}
           start={{x: 0, y: 0}}
           end={{x: 1, y: 0}}>
-          <TouchableOpacity
+          <TouchableOpacity onPress={props.continue}
             style={{
               // borderWidth: 4,
               // borderColor: '#202427',

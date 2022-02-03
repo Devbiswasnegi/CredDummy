@@ -5,7 +5,8 @@ export const loginNumber = data => {
   // })
 
   return (dispatch, getState) => {
-    // console.log("dispatch",getState)
+    // const val=getState()
+    //  console.log("dispatch",val)
     dispatch({
       type: 'LOGINNUMBER',
       payload: data,

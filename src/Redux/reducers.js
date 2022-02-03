@@ -5,7 +5,7 @@ import { ReducerModal } from '../Modals/ReducerModal';
 
 
 
-export default combineReducers ({
+export default  combineReducers ({
   login,
   ReducerModal
 })

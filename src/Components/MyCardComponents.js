@@ -39,7 +39,7 @@ const MyCardComponents = (props) => {
           </View>
           <View style={styles.buttonView}>
             <ManageButton />
-            <SmallBlueButton />
+            <SmallBlueButton continue={props.continue}/>
           </View>
         </View>
       </View>
