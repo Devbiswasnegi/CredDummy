@@ -5,7 +5,8 @@ import {
   StyleSheet,
   Text,
   TouchableOpacity,
-  View,ActivityIndicator
+  View,
+  ActivityIndicator,
 } from 'react-native';
 import React, {useEffect, useRef, useState} from 'react';
 import axios from 'axios';
@@ -21,29 +22,35 @@ const arr = [myntraLogo, boatLogo, lenskartLogo, fabIndiaLogo];
 
 const BenefitScreen = () => {
   const [data, setData] = useState([]);
-  const [more,setMore]=useState(1)
-  const [act,setAct]=useState(false)
+  const [more, setMore] = useState(1);
+  const [act, setAct] = useState(false);
   useEffect(() => {
     axios
-      .get(`https://jsonplaceholder.typicode.com/comments?_limit=1&_page=${more}`)
-      .then(res => {setData([...data,...res.data])
-        setMore(more+1)
-    console.log("useeffect",res)
-    })
+      .get(
+        `https://jsonplaceholder.typicode.com/comments?_limit=3&_page=${more}`,
+      )
+      .then(res => {
+        setData([...data, ...res.data]);
+        setMore(more + 1);
+        console.log('useeffect', res);
+      })
       .catch();
   }, []);
 
-  const press=()=>{
-      setAct(true)
+  const press = () => {
+    setAct(true);
     axios
-    .get(`https://jsonplaceholder.typicode.com/comments?_limit=1&_page=${more}`)
-    .then(res => {setData([...data,...res.data])
-        console.log("press",res)
-    })
-    .catch();
-    setMore(more+1)
-    setAct(false)
-  }
+      .get(
+        `https://jsonplaceholder.typicode.com/comments?_limit=3&_page=${more}`,
+      )
+      .then(res => {
+        setData([...data, ...res.data]);
+        console.log('press', res);
+      })
+      .catch();
+    setMore(more + 1);
+    setAct(false);
+  };
   return (
     <SafeAreaView style={styles.safeMain}>
       <FlatList
@@ -54,9 +61,10 @@ const BenefitScreen = () => {
           //   console.log(item);
           return <Coupon item={item} index={index} />;
         }}
-      /><TouchableOpacity onPress={press}>
-          {act && <ActivityIndicator/>}
-          <Text>more</Text>
+      />
+      <TouchableOpacity onPress={press}>
+        {act && <ActivityIndicator />}
+        <Text>more</Text>
       </TouchableOpacity>
     </SafeAreaView>
   );
@@ -68,7 +76,7 @@ const Coupon = ({item, index}) => {
       <TouchableOpacity style={styles.touch}>
         <Image source={arr[index % arr.length]} style={styles.logo} />
         <View>
-            <Text>{item.id}</Text>
+          <Text>{item.id}</Text>
           <Text style={styles.name}>{item.name}</Text>
           <Text style={styles.email}>{item.email}</Text>
         </View>
@@ -86,7 +94,7 @@ const styles = StyleSheet.create({
     // alignItems: 'center',
   },
   couponMain: {
-    marginVertical: vh(20),
+    marginVertical: vh(15),
     // borderWidth:1  height: vh(150),
     //   width: vw(300),
     //  borderWidth:3,
