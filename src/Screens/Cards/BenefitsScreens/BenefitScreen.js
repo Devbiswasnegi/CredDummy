@@ -1,65 +1,139 @@
-import {SafeAreaView, StyleSheet, Text, View} from 'react-native';
-import React from 'react';
+import {
+  FlatList,
+  Image,
+  SafeAreaView,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  View,ActivityIndicator
+} from 'react-native';
+import React, {useEffect, useRef, useState} from 'react';
 import axios from 'axios';
-import { continueStatement } from '@babel/types';
+import {continueStatement, identifier} from '@babel/types';
+import {vh, vw} from '../../../Util/dimensions';
+
+const myntraLogo = require('../../../assets/Logo/myntraLogo.png');
+const boatLogo = require('../../../assets/Logo/boatLogo.png');
+const lenskartLogo = require('../../../assets/Logo/lenskartLogo.jpeg');
+const fabIndiaLogo = require('../../../assets/Logo/fabIndiaLogo.webp');
+
+const arr = [myntraLogo, boatLogo, lenskartLogo, fabIndiaLogo];
+
 const BenefitScreen = () => {
-  const press = () => {
-    // const options = {
-    //   method: 'GET',
-    //   url: 'https://27coupons.p.rapidapi.com/coupons/popular/',
-    //   params: {key: 'nye30a14KDwLNHEp5UJlHHhW28nlr59n'},
-    //   headers: {
-    //     'x-rapidapi-host': '27coupons.p.rapidapi.com',
-    //     'x-rapidapi-key': '7ceabe5a61msh325763c10c15931p115f27jsn715ac41ea262',
-    //   },
-    // };
+  const [data, setData] = useState([]);
+  const [more,setMore]=useState(1)
+  const [act,setAct]=useState(false)
+  useEffect(() => {
+    axios
+      .get(`https://jsonplaceholder.typicode.com/comments?_limit=1&_page=${more}`)
+      .then(res => {setData([...data,...res.data])
+        setMore(more+1)
+    console.log("useeffect",res)
+    })
+      .catch();
+  }, []);
 
-    // axios
-    //   .request(options)
-    //   .then(response => response.data.json())
-    //   .then(data => console.log(data))
-    //   .catch(function (error) {
-    //     console.error(error);
-    //   });
-
-    // fetch(
-    //   'https://27coupons.p.rapidapi.com/coupons/popular/?key=nye30a14KDwLNHEp5UJlHHhW28nlr59n',
-    //   {
-    //     method: 'GET',
-    //     headers: {
-    //       'x-rapidapi-host': '27coupons.p.rapidapi.com',
-    //       'x-rapidapi-key':
-    //         '7ceabe5a61msh325763c10c15931p115f27jsn715ac41ea262',
-    //     },
-    //   },
-    // )
-    //   .then(response => {
-    //     response.json();
-    //   })
-    //   .then(text => console.log(text))
-    //   .catch(err => {
-    //     console.error(err);
-    //   });
-    fetch("https://imdb8.p.rapidapi.com/auto-complete?q=game%20of%20thr", {
-	"method": "GET",
-	"headers": {
-		"x-rapidapi-host": "imdb8.p.rapidapi.com",
-		"x-rapidapi-key": "7ceabe5a61msh325763c10c15931p115f27jsn715ac41ea262"
-	}
-})
-.then(response => response.json()).then(data=>console.log(data))
-.catch(err => {
-	console.error(err);
-});
-  };
+  const press=()=>{
+      setAct(true)
+    axios
+    .get(`https://jsonplaceholder.typicode.com/comments?_limit=1&_page=${more}`)
+    .then(res => {setData([...data,...res.data])
+        console.log("press",res)
+    })
+    .catch();
+    setMore(more+1)
+    setAct(false)
+  }
   return (
-    <SafeAreaView style={{}}>
-      <Text onPress={press}>gsfsfsd</Text>
+    <SafeAreaView style={styles.safeMain}>
+      <FlatList
+        data={data}
+        showsVerticalScrollIndicator={false}
+        keyExtractor={id => id.toString()}
+        renderItem={({item, index}) => {
+          //   console.log(item);
+          return <Coupon item={item} index={index} />;
+        }}
+      /><TouchableOpacity onPress={press}>
+          {act && <ActivityIndicator/>}
+          <Text>more</Text>
+      </TouchableOpacity>
     </SafeAreaView>
+  );
+};
+
+const Coupon = ({item, index}) => {
+  return (
+    <View style={styles.couponMain}>
+      <TouchableOpacity style={styles.touch}>
+        <Image source={arr[index % arr.length]} style={styles.logo} />
+        <View>
+            <Text>{item.id}</Text>
+          <Text style={styles.name}>{item.name}</Text>
+          <Text style={styles.email}>{item.email}</Text>
+        </View>
+      </TouchableOpacity>
+    </View>
   );
 };
 
 export default BenefitScreen;
 
-const styles = StyleSheet.create({});
-
+const styles = StyleSheet.create({
+  safeMain: {
+    flex: 1,
+    backgroundColor: '#202427',
+    // alignItems: 'center',
+  },
+  couponMain: {
+    marginVertical: vh(20),
+    // borderWidth:1  height: vh(150),
+    //   width: vw(300),
+    //  borderWidth:3,
+    //  borderRadius:(18),
+    alignSelf: 'center',
+    shadowColor: 'grey',
+    shadowOpacity: 1,
+    shadowOffset: {
+      width: -3,
+      height: -3,
+    },
+    shadowRadius: 5,
+  },
+  touch: {
+    borderRadius: vw(18),
+    backgroundColor: 'white',
+    flexDirection: 'row',
+    // borderWidth: 1,
+    // borderColor:"white",
+    height: vh(150),
+    width: vw(300),
+    justifyContent: 'space-around',
+    alignItems: 'center',
+    shadowColor: 'black',
+    shadowOpacity: 1,
+    shadowOffset: {
+      width: 6,
+      height: 6,
+    },
+    shadowRadius: 5,
+  },
+  logo: {
+    width: vw(80),
+    height: vw(80),
+    resizeMode: 'contain',
+  },
+  name: {
+    //   color: 'white',
+    fontSize: 18,
+    fontWeight: 'bold',
+    width: vw(150),
+  },
+  email: {
+    color: 'red',
+    fontSize: 14,
+    fontWeight: 'bold',
+    width: vw(150),
+    marginTop: vh(15),
+  },
+});
