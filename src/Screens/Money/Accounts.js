@@ -10,8 +10,9 @@ const Accounts = () => {
           shadowOpacity: 1,
           shadowRadius: 6,
           // shadowColor: 'rgb(136, 176, 75,0.)',
-          shadowColor:"#ffffff40"
-          
+          shadowColor:"#ffffff40",
+          // borderWidth:1,
+          // elevation:10
           //  width: 200 || 100, height: 50
         }}>
         <View 
@@ -20,6 +21,8 @@ const Accounts = () => {
           shadowOpacity: 1,
           shadowRadius: 6,
           shadowColor: '#00000040',
+          // borderWidth:1,
+          // elevation:10
           //  width: 200 || 100, height: 50
         }}>
           <TouchableOpacity
@@ -30,7 +33,7 @@ const Accounts = () => {
               height: 50,
               alignItems: 'center',
               justifyContent: 'center',
-              backgroundColor:"rgb(136, 176, 75)"
+              backgroundColor:"rgb(136, 176, 75)",elevation:10
             }}>
             {children}
           </TouchableOpacity>
@@ -50,8 +53,9 @@ const Accounts = () => {
           shadowRadius: 6,
           // shadowColor: 'rgb(136, 176, 75,0.)',
           shadowColor:"#00000040"
-          
+          // ,elevation:-10
           //  width: 200 || 100, height: 50
+          // ,borderWidth:1
         }}>
         <View 
         style={{
@@ -59,6 +63,7 @@ const Accounts = () => {
           shadowOpacity: 1,
           shadowRadius: 6,
           shadowColor: '#ffffff40',
+          // elevation:10
           //  width: 200 || 100, height: 50
         }}>
           <TouchableOpacity
@@ -69,7 +74,8 @@ const Accounts = () => {
               height: 50,
               alignItems: 'center',
               justifyContent: 'center',
-              backgroundColor:"rgb(136, 176, 75)"
+              backgroundColor:"rgb(136, 176, 75)",
+              elevation:10
             }}>
             {children}
           </TouchableOpacity>
