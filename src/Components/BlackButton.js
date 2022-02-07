@@ -7,7 +7,8 @@ const BlackButton = props => {
     <View
     // style={{alignItems:"center",justifyContent:"center"}}
     >
-      <TouchableOpacity
+      <TouchableOpacity 
+      onPress={props.onpress}
         style={{
           width: vw(100),
           height: vh(35),

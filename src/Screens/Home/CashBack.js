@@ -1,4 +1,4 @@
-import {StyleSheet, Text, View, Image, Animated, PanResponder} from 'react-native';
+import {StyleSheet, Text, View, Image, Animated, PanResponder, TouchableOpacity} from 'react-native';
 import React, { useRef } from 'react';
 import BlackButton from '../../Components/BlackButton';
 import {screenWidth, vh, vw} from '../../Util/dimensions';
@@ -23,16 +23,33 @@ const CashBack = (props) => {
     }),
   ).current;
   return (
+    <View    style={{
+      // position:"absolute",
+      width: screenWidth - vw(40),
+      borderWidth: 1,
+    
+      borderRadius: vw(20),
+      height: vw(180),
+      marginVertical:vh(10),
+      
+    }}>
+      <View style={{marginTop:vh(60),marginLeft:vw(30)}}>
+      <TouchableOpacity>
+      <Text style={{color:"white"}}>Remainder</Text>
+      <Image source={require('../../assets/Icons/notification.png')} style={{height:vw(30),width:vw(30)}}/>
+      </TouchableOpacity>
+      </View>
     <Animated.View
     {...panResponder.panHandlers}
       style={{
+        position:"absolute",
         width: screenWidth - vw(40),
         borderWidth: 1,
         padding: vw(20),
         backgroundColor: props.backgroundColor,
         borderRadius: vw(20),
         height: vw(180),
-        marginVertical:vh(10),
+        // marginVertical:vh(10),
         transform: [{translateX: slide.x}],
       }}>
       <Text
@@ -64,6 +81,7 @@ const CashBack = (props) => {
         />
       </View>
     </Animated.View>
+    </View>
   );
 };
 

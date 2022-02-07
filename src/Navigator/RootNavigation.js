@@ -17,13 +17,14 @@ import MiscOne from '../MISC/MiscOne';
 import MiscTwo from '../MISC/MiscTwo';
 import DetailModal from '../Modals/DetailModal';
 import Details from '../Screens/Details/Details';
+import CardTopTabBar from './CardTopTabBar';
 
 const Stack = createNativeStackNavigator();
 
 function RootNavigation() {
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName="BottomTabNavigator">
+      <Stack.Navigator initialRouteName="Splash">
         <Stack.Screen
           name="Splash"
           component={Splash}
@@ -84,6 +85,12 @@ function RootNavigation() {
           component={CreditCards}
           options={{headerShown: false}}
         />
+          {/* <Stack.Screen
+          name="CardTopTabBar"
+          component={CardTopTabBar}
+          options={{headerShown: false}}
+        /> */}
+
 
 <Stack.Screen
           name="MiscOne"
@@ -100,7 +107,7 @@ function RootNavigation() {
 {/* <Stack.Screen
           name="Details"
           component={Details}
-          options={{headerShown: false,presentation:"transparentModal"}}
+          options={{headerShown: false,presentation:"transparentModal"}} CardTopTabBar
         /> */}
       </Stack.Navigator>
     </NavigationContainer>

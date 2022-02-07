@@ -100,7 +100,7 @@ const BottomTabNavigator = props => {
                     open
                       ? props.navigation.navigate('Details')
                       // : props.navigation.navigate('cards')
-                      :props.navigation.goBack()
+                      :props.navigation.navigate("CardTopTabBar")
                   }}>
                   <Image
                     source={require('../assets/Icons/detail.png')}

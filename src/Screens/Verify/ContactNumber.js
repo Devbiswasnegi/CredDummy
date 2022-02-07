@@ -24,27 +24,27 @@ const ContactNumber = props => {
 
   const pressButton = async () => {
     // console.log('number', '+91' + number);
-    // try {
-    //   const confirmation = await auth().signInWithPhoneNumber('+91' + number);
-    //   // setConfirm(confirmation);
-    //   console.log('confirmation', confirmation);
+    try {
+      const confirmation = await auth().signInWithPhoneNumber('+91' + number);
+      // setConfirm(confirmation);
+      console.log('confirmation', confirmation);
 
-    //   dispatch(loginNumber(number));
-    //   check && number !== '' && `${number}`.length < 15
-    //     ? props.navigation.navigate('OtpScreen', {
-    //         number: number,
-    //         confirmation: confirmation,
-    //       })
-    //     : null;
-    // } catch (err) {
-    //   console.log('err', err);
-    // }
+      dispatch(loginNumber(number));
+      check && number !== '' && `${number}`.length < 15
+        ? props.navigation.navigate('OtpScreen', {
+            number: number,
+            confirmation: confirmation,
+          })
+        : null;
+    } catch (err) {
+      console.log('err', err);
+    }
 
-    dispatch(loginNumber(number));
-    props.navigation.navigate('OtpScreen', {
-              number: number,
-              // confirmation: confirmation,
-            })
+    // dispatch(loginNumber(number));
+    // props.navigation.navigate('OtpScreen', {
+    //           number: number,
+    //           // confirmation: confirmation,
+    //         })
   };
   return (
     <SafeAreaView style={styles.mainSafe}>

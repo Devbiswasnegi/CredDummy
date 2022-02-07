@@ -9,10 +9,12 @@ const Mycards = (props) => {
       <ScrollView
         showsVerticalScrollIndicator={false}
         style={{
-          width: screenWidth - vw(40),
+          // width: screenWidth - vw(40),
           //   borderWidth: 1,
 
-          alignSelf: 'center',
+          // alignSelf: 'center',
+          // alignItems:"center",
+          // marginLeft:24,
           marginTop: vh(20),
         }}>
         <View style={{}}>

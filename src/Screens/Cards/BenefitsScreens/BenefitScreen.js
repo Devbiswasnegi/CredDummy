@@ -10,7 +10,6 @@ import {
 } from 'react-native';
 import React, {useEffect, useRef, useState} from 'react';
 import axios from 'axios';
-import {continueStatement, identifier} from '@babel/types';
 import {vh, vw} from '../../../Util/dimensions';
 
 const myntraLogo = require('../../../assets/Logo/myntraLogo.png');
@@ -64,7 +63,7 @@ const BenefitScreen = () => {
       />
       <TouchableOpacity onPress={press}>
         {act && <ActivityIndicator />}
-        <Text>more</Text>
+        <Text style={{color:"lightblue",fontSize:20,fontWeight:"bold"}}>more. . .</Text>
       </TouchableOpacity>
     </SafeAreaView>
   );
@@ -76,7 +75,7 @@ const Coupon = ({item, index}) => {
       <TouchableOpacity style={styles.touch}>
         <Image source={arr[index % arr.length]} style={styles.logo} />
         <View>
-          <Text>{item.id}</Text>
+          {/* <Text>{item.id}</Text> */}
           <Text style={styles.name}>{item.name}</Text>
           <Text style={styles.email}>{item.email}</Text>
         </View>

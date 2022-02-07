@@ -36,7 +36,7 @@ const HomeScreen = () => {
     }),
   ).current;
 
-  // const {name} = useSelector(state => state.login);
+  const {name} = useSelector(state => state.login);
   // console.log('name', panResponder.panHandlers);
   return (
     <SafeAreaView style={styles.mainView}>
@@ -56,7 +56,7 @@ const HomeScreen = () => {
       <ScrollView showsVerticalScrollIndicator={false}>
         <View style={styles.ViewOne}>
           <Text style={styles.nameText}>hello, 
-          {/* {name} */}
+          {name}
           </Text>
           <Text style={styles.rec}>
             here are today's recommended actions for you
@@ -86,19 +86,19 @@ const HomeScreen = () => {
 
           <PaymentCard
             heading="clear your upcoming bills to earn coins"
-            BankName="Axis Bank"
-            CardNumber="xxxx 2312"
+            BankName="Kotak Bank"
+            CardNumber="xxxx 5432"
             Days="10"
-            Amount="13432"
+            Amount="7432"
             backgroundColor="white"
           />
 
           <PaymentCard
             heading="clear your upcoming bills to earn coins"
-            BankName="Axis Bank"
-            CardNumber="xxxx 2312"
+            BankName="HDFC Bank"
+            CardNumber="xxxx 9876"
             Days="10"
-            Amount="13432"
+            Amount="432"
             backgroundColor="white"
           />
         </View>

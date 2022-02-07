@@ -52,7 +52,8 @@ export default MyCardComponents;
 const styles = StyleSheet.create({
   mainView: {
     // borderWidth: 1,
-    alignItems: 'center',
+    // borderColor:"yellow",
+    alignItems: 'center', 
     height: vw(410),
     justifyContent: 'center',
     shadowColor: 'black',
@@ -61,8 +62,8 @@ const styles = StyleSheet.create({
       height: 4,
     },
     shadowOpacity: 5,
-    shadowRadius: 2,
-    borderRadius: 10,
+    shadowRadius: 6,
+    borderRadius: vw(15),
     // position:"absolute"
     // backgroundColor:"lightblack"
     marginVertical: vh(5),
@@ -74,19 +75,19 @@ const styles = StyleSheet.create({
     //   borderWidth: 1,
     width: screenWidth - vw(50),
     backgroundColor: '#202427',
-    borderRadius: 14,
-    shadowColor: 'black',
+    
+    shadowColor: '#3F4549',
     shadowOffset: {
-      width: -4,
-      height: -4,
+      width: -2,
+      height: -2,
     },
     shadowOpacity: 5,
     shadowRadius: 5,
-    borderRadius: 10,
+    borderRadius: vw(15),
     // marginTop:vh(5),
     elevation: 5,
   },
-  cardView: {marginTop: vh(5)},
+  cardView: {},
   txtView: {
     width: screenWidth - vw(70),
     //   maxHeight: vh(200),

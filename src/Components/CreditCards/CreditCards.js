@@ -6,14 +6,16 @@ import LinearGradient from 'react-native-linear-gradient';
 const CreditCards = props => {
   // console.log('props', props);
   return (
-    <SafeAreaView>
+    
       <View style={{}}>
         <LinearGradient
           colors={props?.backColor}
           start={{x: 0, y: 0}}
           end={{x: 1, y: 0}}
           style={{
-            width: screenWidth - vw(60),
+            width: screenWidth - vw(52),
+            
+            
             // borderWidth: 1,
             height: vh(190),
             borderRadius: vw(15),
@@ -30,7 +32,7 @@ const CreditCards = props => {
           </View>
         </LinearGradient>
       </View>
-    </SafeAreaView>
+  
   );
 };
 
