@@ -1,0 +1,54 @@
+{
+  "project_info": {
+    "project_number": "1066446721194",
+    "project_id": "cred-demo-c632a",
+    "storage_bucket": "cred-demo-c632a.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1066446721194:android:02ed54b827252c34e880d3",
+        "android_client_info": {
+          "package_name": "com.creddemo"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1066446721194-57llddaqf2eo2a9m4mgibmgs0iu2h504.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.creddemo",
+            "certificate_hash": "857541cc96a9e6d98bdcbef1261365cc4d725f77"
+          }
+        },
+        {
+          "client_id": "1066446721194-677psv47o8m8rjfove4co28cs870lpnc.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAlLeIAyXd8AkZidPtH6lRDf4ICq5cvuJs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1066446721194-677psv47o8m8rjfove4co28cs870lpnc.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "1066446721194-m4cnlb0oafqng9aia8v3ftc0cnebpta9.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "org.reactjs.native.example.CredDemo"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
