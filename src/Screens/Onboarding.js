@@ -115,7 +115,7 @@ const Onboarding = props => {
               alignItems: 'center',
               justifyContent: 'center',
             }}
-            onPress={() => props.navigation.navigate('ContactNumber')}>
+            onPress={() => props.navigation.navigate('LoginIn')}>
             <Text
               style={{
                 color: '#E6C6B1',

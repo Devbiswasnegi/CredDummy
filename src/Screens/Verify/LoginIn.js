@@ -15,28 +15,46 @@ import {localImages} from '../../Util/LocalImages';
 import {useDispatch} from 'react-redux';
 import {loginNumber} from './action';
 import auth from '@react-native-firebase/auth';
-import BackButton from '../../Components/BackButton';
+import {
+    GoogleSignin,
+    GoogleSigninButton,
+    statusCodes,
+  } from '@react-native-google-signin/google-signin';
+//   import { LoginButton, AccessToken } from 'react-native-fbsdk-next';
+import GoogleFblogin from '../../Components/GoogleFblogin';
 
-const ContactNumber = props => {
+const LoginIn = props => {
   const [check, setCheck] = useState(false);
-  const [number, setNumber] = useState('');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
   const [confirm, setConfirm] = useState(null);
   const dispatch = useDispatch();
 
   const pressButton = async () => {
     // console.log('number', '+91' + number);
     try {
-      const confirmation = await auth().signInWithPhoneNumber('+91' + number);
-      // setConfirm(confirmation);
-      console.log('confirmation', confirmation);
-
-      dispatch(loginNumber(number));
-      check && number !== '' && `${number}`.length < 15
-        ? props.navigation.navigate('OtpScreen', {
-            number: number,
-            confirmation: confirmation,
-          })
-        : null;
+        auth()
+        .signInWithEmailAndPassword(email, password)
+        .then(() => {
+            props.navigation.navigate('GrantPermission', {
+                // number: number,
+                // confirmation: confirmation,
+              })
+        })
+        .catch(error => {
+          if (error.code === 'auth/email-already-in-use') {
+            console.log('That email address is already in use!');
+          }
+      
+          if (error.code === 'auth/invalid-email') {
+            console.log('That email address is invalid!');
+          }
+      
+          console.error(error);
+        });
+  
+      // dispatch(loginNumber(number));
+    
     } catch (err) {
       console.log('err', err);
     }
@@ -50,27 +68,42 @@ const ContactNumber = props => {
   return (
     <SafeAreaView style={styles.mainSafe}>
       <View style={styles.mainView}>
-      <BackButton {...props} />
-        <Text style={styles.giveUs}>give us your mobile number</Text>
+        <Text style={styles.giveUs}>give us your Email to login</Text>
 
         <Text style={styles.toApply}>
-          to apply, we need your mobile number linked to your
+          to apply, we need your Email linked to your account
         </Text>
 
         <View style={{paddingVertical: vh(20)}}>
-          <TextNumber
-            placeholder={'9999999999'}
-            maxLength={10}
-            onChangeText={text => {
-              let re = /^[789]\d{9}$/;
-              if (re.test(text) === false) {
-                // Alert.alert("please enter correct number")
-                return false;
-              } else {
-                setNumber(text);
-                // Alert.alert('please enter correct number');
-              }
-            }}
+        <TextNumber
+            placeholder={'Email'}
+            //   maxLength={10}
+              onChangeText={text => {
+                let re = /\S+@\S+\.\S+/;
+                if (re.test(text) === false) {
+                  // Alert.alert("please enter correct number")
+                  return false;
+                } else {
+                  setEmail(text);
+                  // Alert.alert('please enter correct number');
+                }
+              }}
+          />
+
+<TextNumber
+            placeholder={'Password'}
+            //   maxLength={10}
+              onChangeText={text => {
+                // let re = /^[789]\d{9}$/;
+                // if (re.test(text) === false) {
+                //   // Alert.alert("please enter correct number")
+                //   return false;
+                // } else {
+                //   setNumber(text);
+                //   // Alert.alert('please enter correct number');
+                // }
+                setPassword(text)
+              }}
           />
         </View>
 
@@ -108,12 +141,21 @@ const ContactNumber = props => {
         <View style={{marginTop: vh(40)}}>
           <ButtonComponent opacity={check} onPress={pressButton} />
         </View>
+
+        <GoogleFblogin {...props}/>
+
+
+        <TouchableOpacity onPress={()=>{props.navigation.navigate("ContactNumber")}} style={{marginTop:vh(20)}}>
+            <Text style={{color:"white",fontWeight:"bold"}}>USING MOBILE NUMBER FOR LOGIN ?</Text>
+        </TouchableOpacity>
+
+
       </View>
     </SafeAreaView>
   );
 };
 
-export default ContactNumber;
+export default LoginIn;
 
 const styles = StyleSheet.create({
   giveUs: {
@@ -123,7 +165,6 @@ const styles = StyleSheet.create({
     letterSpacing: 1.5,
     width: vw(150),
     lineHeight: vh(25),
-    marginTop:vh(20)
   },
   toApply: {
     color: '#55575A',
@@ -139,7 +180,7 @@ const styles = StyleSheet.create({
     height: vw(28),
     width: vw(28),
     borderRadius: vw(6),
-    marginTop: vh(150),
+    // marginTop: vh(200),
     marginBottom: vh(25),
     backgroundColor: '#282828',
     opacity: 0.5,

@@ -9,7 +9,7 @@ const TextNumber = props => {
         style={styles.input}
         placeholder={props.placeholder}
         placeholderTextColor= '#33373A'
-        keyboardType="numeric"      
+        // keyboardType="numeric"      
         maxLength={props.maxLength}
         onChangeText={props.onChangeText}
         />

@@ -1,30 +1,15 @@
-import {
-  SafeAreaView,
-  StyleSheet,
-  Text,
-  TouchableOpacity,
-  View,
-} from 'react-native';
-import React, {useState} from 'react';
-import MiscOne from './MiscOne';
-import auth from '@react-native-firebase/auth';
-// import {LoginButton, AccessToken} from 'react-native-fbsdk-next';
+import {StyleSheet, Text, TouchableOpacity, View, Image} from 'react-native';
+import React from 'react';
 import {
   GoogleSignin,
   GoogleSigninButton,
-  statusCodes,
 } from '@react-native-google-signin/google-signin';
+import auth from '@react-native-firebase/auth';
 import {useEffect} from 'react';
 import {LoginManager, AccessToken} from 'react-native-fbsdk-next';
+import {vh, vw} from '../Util/dimensions';
 
-const MiscTwo = () => {
-  const [name, setName] = useState('');
-  const [userInfo, setUserInfo] = useState();
-
-  // const re=(t)=>{
-  //     console.log("callback",t)
-  //     setName(t)
-  // }
+const GoogleFblogin = props => {
   useEffect(() => {
     GoogleSignin.configure({
       webClientId:
@@ -49,31 +34,13 @@ const MiscTwo = () => {
 
       // Sign-in the user with the credential
       await auth().signInWithCredential(googleCredential);
+
+      if (userInfo.user.email.length > 0) {
+        props.navigation.navigate('BottomTabNavigator');
+      }
     } catch (error) {
       console.log('error', error);
     }
-  };
-
-  const loginPress = () => {
-    auth()
-      .createUserWithEmailAndPassword(
-        'jane.doe@example.com',
-        'SuperSecretPassword!',
-      )
-      .then(() => {
-        console.log('User account created & signed in!');
-      })
-      .catch(error => {
-        if (error.code === 'auth/email-already-in-use') {
-          console.log('That email address is already in use!');
-        }
-
-        if (error.code === 'auth/invalid-email') {
-          console.log('That email address is invalid!');
-        }
-
-        console.error(error);
-      });
   };
 
   async function onFacebookButtonPress() {
@@ -104,30 +71,46 @@ const MiscTwo = () => {
     return auth().signInWithCredential(facebookCredential);
   }
   return (
-    <SafeAreaView style={{flex: 1}}>
-      <TouchableOpacity
-        onPress={loginPress}
-        style={{height: 50, width: 300, borderWidth: 1}}>
-        <Text>userSign</Text>
-      </TouchableOpacity>
-      <GoogleSigninButton
+    <View
+      style={{
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        width: vw(300),
+        marginTop: vh(50),
+        // borderWidth:1
+      }}>
+      {/* <GoogleSigninButton
         style={{width: 192, height: 48}}
         size={GoogleSigninButton.Size.Wide}
         color={GoogleSigninButton.Color.Dark}
-        // icon={GoogleSigninButton.Size.Icon}
         onPress={_signIn}
         // disabled={this.state.isSigninInProgress}
-      />
+      /> */}
 
-      <TouchableOpacity
-        onPress={onFacebookButtonPress}
-        style={{width: 200, height: 40, borderWidth: 1}}>
-        <Text>fb</Text>
+      <TouchableOpacity onPress={_signIn} style={{}}>
+        <Image
+          style={{width: vw(60), height: vw(60)}}
+          source={require('../assets/Logo/google.png')}
+        />
       </TouchableOpacity>
-    </SafeAreaView>
+
+      <TouchableOpacity onPress={onFacebookButtonPress} style={{}}>
+        <Image
+          style={{width: vw(60), height: vw(60)}}
+          source={require('../assets/Logo/facebook.png')}
+        />
+      </TouchableOpacity>
+
+      <TouchableOpacity onPress={()=>props.navigation.navigate("SignUp")} style={{}}>
+        <Image
+          style={{width: vw(60), height: vw(60)}}
+          source={require('../assets/Logo/signup.png')}
+        />
+      </TouchableOpacity>
+    </View>
   );
 };
 
-export default MiscTwo;
+export default GoogleFblogin;
 
 const styles = StyleSheet.create({});

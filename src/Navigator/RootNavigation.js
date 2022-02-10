@@ -18,13 +18,15 @@ import MiscTwo from '../MISC/MiscTwo';
 import DetailModal from '../Modals/DetailModal';
 import Details from '../Screens/Details/Details';
 import CardTopTabBar from './CardTopTabBar';
+import LoginIn from '../Screens/Verify/LoginIn';
+import SignUp from '../Screens/Verify/SignUp';
 
 const Stack = createNativeStackNavigator();
 
 function RootNavigation() {
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName="MiscTwo">
+      <Stack.Navigator initialRouteName="Splash">
         <Stack.Screen
           name="Splash"
           component={Splash}
@@ -68,6 +70,18 @@ function RootNavigation() {
         <Stack.Screen
           name="BottomTabNavigator"
           component={BottomTabNavigator}
+          options={{headerShown: false}}
+        />
+
+<Stack.Screen
+          name="LoginIn"
+          component={LoginIn}
+          options={{headerShown: false}}
+        />
+
+<Stack.Screen
+          name="SignUp"
+          component={SignUp}
           options={{headerShown: false}}
         />
          <Stack.Screen

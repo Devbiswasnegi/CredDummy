@@ -190,6 +190,8 @@ android {
 }
 
 dependencies {
+    implementation 'com.facebook.android:facebook-android-sdk:latest.release'
+    implementation project(':react-native-fbsdk-next')
     implementation platform('com.google.firebase:firebase-bom:29.0.4')
     implementation 'com.google.firebase:firebase-analytics'
 // implementation 'androidx.swiperefreshlayout:swiperefreshlayout:1.0.0'
