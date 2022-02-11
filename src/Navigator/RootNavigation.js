@@ -26,7 +26,7 @@ const Stack = createNativeStackNavigator();
 function RootNavigation() {
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName="Splash">
+      <Stack.Navigator initialRouteName="GrantPermission">
         <Stack.Screen
           name="Splash"
           component={Splash}
@@ -73,52 +73,51 @@ function RootNavigation() {
           options={{headerShown: false}}
         />
 
-<Stack.Screen
+        <Stack.Screen
           name="LoginIn"
           component={LoginIn}
           options={{headerShown: false}}
         />
 
-<Stack.Screen
+        <Stack.Screen
           name="SignUp"
           component={SignUp}
           options={{headerShown: false}}
         />
-         <Stack.Screen
+        <Stack.Screen
           name="EnterName"
           component={EnterName}
           options={{headerShown: false}}
         />
-         <Stack.Screen
+        <Stack.Screen
           name="EnterPanNumber"
           component={EnterPanNumber}
           options={{headerShown: false}}
         />
-         <Stack.Screen
+        <Stack.Screen
           name="CreditCards"
           component={CreditCards}
           options={{headerShown: false}}
         />
-          {/* <Stack.Screen
+        {/* <Stack.Screen
           name="CardTopTabBar"
           component={CardTopTabBar}
           options={{headerShown: false}}
         /> */}
 
-
-<Stack.Screen
+        <Stack.Screen
           name="MiscOne"
           component={MiscOne}
           options={{headerShown: false}}
         />
 
-<Stack.Screen
+        <Stack.Screen
           name="MiscTwo"
           component={MiscTwo}
           options={{headerShown: false}}
         />
 
-{/* <Stack.Screen
+        {/* <Stack.Screen
           name="Details"
           component={Details}
           options={{headerShown: false,presentation:"transparentModal"}} CardTopTabBar

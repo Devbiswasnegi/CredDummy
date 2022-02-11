@@ -1,8 +1,16 @@
 import {StyleSheet, Text, View, Image, TouchableOpacity} from 'react-native';
 import React from 'react';
 import {screenWidth, vh, vw} from '../../Util/dimensions';
+import auth from '@react-native-firebase/auth';
 
-const Manage = () => {
+const Manage = (props) => {
+  const signOut=()=>{
+    console.log(props)
+    
+    auth()
+    .signOut()
+    .then(() =>props.navigation.navigate("LoginIn"));
+  }
   return (
     <View style={{flex: 1, backgroundColor: '#202427', alignItems: 'center'}}>
       <Option
@@ -35,14 +43,21 @@ const Manage = () => {
         txt={'call bank customer care'}
         arrow={require('../../assets/Icons/next.png')}
       />
+
+      <Option
+        icon={require('../../assets/Icons/customer-service.png')}
+        txt={'logout'}
+        arrow={require('../../assets/Icons/next.png')}
+        press={signOut}
+      />
     </View>
   );
 };
 
-const Option = ({icon, txt, arrow}) => {
+const Option = ({icon, txt, arrow,press}) => {
   return (
     <View style={styles.compMainView}>
-      <TouchableOpacity style={styles.compView}>
+      <TouchableOpacity style={styles.compView} onPress={press}>
         <View style={styles.iconView}>
           <Image source={icon} style={styles.icon} />
           <Text style={styles.txt}>{txt}</Text>
