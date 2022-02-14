@@ -5,6 +5,7 @@ import LinearGradient from 'react-native-linear-gradient';
 
 const CreditCards = props => {
   // console.log('props', props);
+  console.log("creditCards")
   return (
     
       <View style={{}}>

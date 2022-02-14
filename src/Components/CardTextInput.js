@@ -3,6 +3,7 @@ import React from 'react';
 import {vh, vw} from '../Util/dimensions';
 
 const CardTextInput = props => {
+  console.log("input")
   return (
     <View style={{}}>
       <TextInput
