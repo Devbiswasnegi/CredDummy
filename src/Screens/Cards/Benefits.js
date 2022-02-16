@@ -3,6 +3,7 @@ import React from 'react';
 import {NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import BenefitScreen from './BenefitsScreens/BenefitScreen';
+import ListEmpty from './BenefitsScreens/ListEmpty';
 const BenefitsNavigator = createNativeStackNavigator();
 
 const Benefits = () => {
@@ -10,8 +11,8 @@ const Benefits = () => {
     <View style={{flex: 1}}>
       <BenefitsNavigator.Navigator>
         <BenefitsNavigator.Screen
-          name="BenefitScreen"
-          component={BenefitScreen}
+          name="ListEmpty"
+          component={ListEmpty}
           options={{headerShown: false}}
         />
       </BenefitsNavigator.Navigator>

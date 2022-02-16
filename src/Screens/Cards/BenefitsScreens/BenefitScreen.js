@@ -7,10 +7,12 @@ import {
   TouchableOpacity,
   View,
   ActivityIndicator,
+  TextInput,
 } from 'react-native';
 import React, {useEffect, useRef, useState} from 'react';
 import axios from 'axios';
 import {vh, vw} from '../../../Util/dimensions';
+import ListEmpty from './ListEmpty';
 
 const myntraLogo = require('../../../assets/Logo/myntraLogo.png');
 const boatLogo = require('../../../assets/Logo/boatLogo.png');
@@ -21,68 +23,84 @@ const arr = [myntraLogo, boatLogo, lenskartLogo, fabIndiaLogo];
 
 const BenefitScreen = () => {
   const [data, setData] = useState([]);
+  const [extradata, setExtradata] = useState([]);
   const [more, setMore] = useState(1);
   const [act, setAct] = useState(false);
+  const [search, setSearch] = useState();
   useEffect(() => {
+    // axios
+    //   .get(
+    //     `https://jsonplaceholder.typicode.com/comments?_limit=3&_page=${more}`,
+    //   )
+    //   .then(res => {
+    //     setData([...data, ...res.data]);
+    //     setMore(more + 1);
+    //     console.log('useeffect', res);
+    //   })
+    //   .catch();
+
     axios
-      .get(
-        `https://jsonplaceholder.typicode.com/comments?_limit=3&_page=${more}`,
-      )
+      .get(`https://jsonplaceholder.typicode.com/comments`)
       .then(res => {
-        setData([...data, ...res.data]);
-        setMore(more + 1);
-        console.log('useeffect', res);
+        setExtradata(res?.data.map(e => e.name));
+        //  console.log('extraData', res?.data);
       })
       .catch();
   }, []);
 
   const press = () => {
-    setAct(true);
-    axios
-      .get(
-        `https://jsonplaceholder.typicode.com/comments?_limit=3&_page=${more}`,
-      )
-      .then(res => {
-        setData([...data, ...res.data]);
-        console.log('press', res);
-      })
-      .catch();
-    setMore(more + 1);
-    setAct(false);
+    console.log('extraData', extradata);
   };
   return (
     <SafeAreaView style={styles.safeMain}>
-      <FlatList
-        data={data}
-        showsVerticalScrollIndicator={false}
-        keyExtractor={id => id.toString()}
-        renderItem={({item, index}) => {
-          //   console.log(item);
-          return <Coupon item={item} index={index} />;
+      <TextInput
+        placeholder="SEARCH"
+        style={styles.searchBar}
+        onChangeText={text => {
+          setSearch(
+            extradata.filter(ele =>
+              ele.toLowerCase().includes(text.toLowerCase()),
+            ),
+          );
+          // console.log(text);
         }}
       />
       <TouchableOpacity onPress={press}>
         {act && <ActivityIndicator />}
-        <Text style={{color:"lightblue",fontSize:20,fontWeight:"bold"}}>more. . .</Text>
+        <Text style={{color: 'lightblue', fontSize: 20, fontWeight: 'bold'}}>
+          more. . .
+        </Text>
       </TouchableOpacity>
+      <FlatList
+        data={search}
+        showsVerticalScrollIndicator={false}
+        keyExtractor={id => id.toString()}
+        renderItem={({item, index}) => {
+            console.log(item);
+          return(
+         <Text style={{color:"white"}}>{item}</Text>
+          )
+        }}
+        
+      />
     </SafeAreaView>
   );
 };
 
-const Coupon = ({item, index}) => {
-  return (
-    <View style={styles.couponMain}>
-      <TouchableOpacity style={styles.touch}>
-        <Image source={arr[index % arr.length]} style={styles.logo} />
-        <View>
-          {/* <Text>{item.id}</Text> */}
-          <Text style={styles.name}>{item.name}</Text>
-          <Text style={styles.email}>{item.email}</Text>
-        </View>
-      </TouchableOpacity>
-    </View>
-  );
-};
+// const Coupon = ({item, index}) => {
+//   return (
+//     <View style={styles.couponMain}>
+//       <TouchableOpacity style={styles.touch}>
+//         <Image source={arr[index % arr.length]} style={styles.logo} />
+//         <View>
+//           {/* <Text>{item.id}</Text> */}
+//           <Text style={styles.name}>{item.name}</Text>
+//           <Text style={styles.email}>{item.email}</Text>
+//         </View>
+//       </TouchableOpacity>
+//     </View>
+//   );
+// };
 
 export default BenefitScreen;
 
@@ -142,5 +160,16 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     width: vw(150),
     marginTop: vh(15),
+  },
+  searchBar: {
+    width: vw(300),
+    borderWidth: 2,
+    borderColor: 'white',
+    fontSize: vw(18),
+    paddingVertical: vh(10),
+    alignSelf: 'center',
+    borderRadius: vw(10),
+    color: 'white',
+    paddingLeft: vw(10),
   },
 });

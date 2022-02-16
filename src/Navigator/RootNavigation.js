@@ -20,13 +20,14 @@ import Details from '../Screens/Details/Details';
 import CardTopTabBar from './CardTopTabBar';
 import LoginIn from '../Screens/Verify/LoginIn';
 import SignUp from '../Screens/Verify/SignUp';
+import BenefitScreen from '../Screens/Cards/BenefitsScreens/BenefitScreen';
 
 const Stack = createNativeStackNavigator();
 
 function RootNavigation() {
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName="CardDetailsStartModal">
+      <Stack.Navigator initialRouteName="BenefitScreen">
         <Stack.Screen
           name="Splash"
           component={Splash}
@@ -99,15 +100,11 @@ function RootNavigation() {
           component={CreditCards}
           options={{headerShown: false}}
         />
-        {/* <Stack.Screen
-          name="CardTopTabBar"
-          component={CardTopTabBar}
-          options={{headerShown: false}}
-        /> */}
+       
 
         <Stack.Screen
-          name="MiscOne"
-          component={MiscOne}
+          name="BenefitScreen"
+          component={BenefitScreen}
           options={{headerShown: false}}
         />
 
@@ -123,6 +120,7 @@ function RootNavigation() {
           options={{headerShown: false,presentation:"transparentModal"}} CardTopTabBar
         /> */}
       </Stack.Navigator>
+
     </NavigationContainer>
   );
 }
