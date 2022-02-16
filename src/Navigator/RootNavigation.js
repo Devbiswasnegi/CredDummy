@@ -27,7 +27,7 @@ const Stack = createNativeStackNavigator();
 function RootNavigation() {
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName="BenefitScreen">
+      <Stack.Navigator initialRouteName="BottomTabNavigator">
         <Stack.Screen
           name="Splash"
           component={Splash}

@@ -65,18 +65,7 @@ import {
     };
     return (
       <SafeAreaView style={styles.safeMain}>
-        <TextInput
-          placeholder="SEARCH"
-          style={styles.searchBar}
-          onChangeText={text => {
-            setSearch(
-              extradata.filter(ele =>
-                ele.toLowerCase().includes(text.toLowerCase())
-              ),
-            );
-            console.log(text);
-          }}
-        />
+    
         <FlatList
           data={data}
           showsVerticalScrollIndicator={false}
@@ -85,7 +74,7 @@ import {
             //   console.log(item);
             return <Coupon item={item} index={index} />;
           }}
-          ListEmptyComponent={<BenefitScreen/>}
+        //   ListEmptyComponent={<BenefitScreen/>}
         />
         <TouchableOpacity onPress={press}>
           {act && <ActivityIndicator />}

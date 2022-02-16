@@ -10,9 +10,15 @@ const Benefits = () => {
   return (
     <View style={{flex: 1}}>
       <BenefitsNavigator.Navigator>
-        <BenefitsNavigator.Screen
+        {/* <BenefitsNavigator.Screen
           name="ListEmpty"
           component={ListEmpty}
+          options={{headerShown: false}}
+        /> */}
+
+        <BenefitsNavigator.Screen
+          name="BenefitScreen"
+          component={BenefitScreen}
           options={{headerShown: false}}
         />
       </BenefitsNavigator.Navigator>

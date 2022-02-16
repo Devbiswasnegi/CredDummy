@@ -53,6 +53,7 @@ const BenefitScreen = () => {
   };
   return (
     <SafeAreaView style={styles.safeMain}>
+       
       <TextInput
         placeholder="SEARCH"
         style={styles.searchBar}
@@ -62,26 +63,33 @@ const BenefitScreen = () => {
               ele.toLowerCase().includes(text.toLowerCase()),
             ),
           );
-          // console.log(text);
+          console.log("text",text);
+          if(text==''){
+            setSearch('')
+          }
         }}
       />
-      <TouchableOpacity onPress={press}>
+      {/* <TouchableOpacity onPress={press}>
         {act && <ActivityIndicator />}
         <Text style={{color: 'lightblue', fontSize: 20, fontWeight: 'bold'}}>
           more. . .
         </Text>
-      </TouchableOpacity>
+      </TouchableOpacity> */}
       <FlatList
         data={search}
         showsVerticalScrollIndicator={false}
         keyExtractor={id => id.toString()}
         renderItem={({item, index}) => {
-            console.log(item);
-          return(
-         <Text style={{color:"white"}}>{item}</Text>
-          )
+          console.log(item);
+          return (
+            <Text
+              style={styles.searchText}>
+              {item}
+            </Text>
+          );
         }}
-        
+
+        ListEmptyComponent={<ListEmpty/>}
       />
     </SafeAreaView>
   );
@@ -172,4 +180,14 @@ const styles = StyleSheet.create({
     color: 'white',
     paddingLeft: vw(10),
   },
+  searchText:{
+    color: 'white',
+    borderWidth: 1,
+    borderColor: 'white',
+    marginVertical: vh(5),
+    paddingVertical: vh(10),
+    paddingLeft:vw(10),
+    fontSize: vw(20),
+    marginHorizontal:vw(10),borderRadius:vw(10)
+  }
 });
