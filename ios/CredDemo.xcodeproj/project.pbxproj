@@ -14,6 +14,7 @@
 		40C65812BF0D94279E106222 /* libPods-CredDemo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E9C8CA7F47265FC7B4515876 /* libPods-CredDemo.a */; };
 		752EBED6C55FDF3685782A8A /* libPods-CredDemo-CredDemoTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 679EBCDFE0F2F78C0CD86237 /* libPods-CredDemo-CredDemoTests.a */; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
+		845B1E0827BE1099005DCB40 /* File.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845B1E0727BE1099005DCB40 /* File.swift */; };
 		84C9FE1F27A3CAD40054758B /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 84C9FE1E27A3CAD40054758B /* GoogleService-Info.plist */; };
 /* End PBXBuildFile section */
 
@@ -41,6 +42,8 @@
 		679EBCDFE0F2F78C0CD86237 /* libPods-CredDemo-CredDemoTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-CredDemo-CredDemoTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		712E0A954B9C52B57E8B674A /* Pods-CredDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CredDemo.debug.xcconfig"; path = "Target Support Files/Pods-CredDemo/Pods-CredDemo.debug.xcconfig"; sourceTree = "<group>"; };
 		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = CredDemo/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		845B1DFD27BD0CAD005DCB40 /* CredDemo-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "CredDemo-Bridging-Header.h"; sourceTree = "<group>"; };
+		845B1E0727BE1099005DCB40 /* File.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = File.swift; sourceTree = "<group>"; };
 		84C9FE1E27A3CAD40054758B /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		CD1883969E1639A0A9DDF810 /* Pods-CredDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CredDemo.release.xcconfig"; path = "Target Support Files/Pods-CredDemo/Pods-CredDemo.release.xcconfig"; sourceTree = "<group>"; };
 		D2A82261D9C7C5A28CF4948A /* Pods-CredDemo-CredDemoTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CredDemo-CredDemoTests.debug.xcconfig"; path = "Target Support Files/Pods-CredDemo-CredDemoTests/Pods-CredDemo-CredDemoTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -95,6 +98,8 @@
 				13B07FB61A68108700A75B9A /* Info.plist */,
 				81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */,
 				13B07FB71A68108700A75B9A /* main.m */,
+				845B1DFD27BD0CAD005DCB40 /* CredDemo-Bridging-Header.h */,
+				845B1E0727BE1099005DCB40 /* File.swift */,
 			);
 			name = CredDemo;
 			sourceTree = "<group>";
@@ -211,7 +216,7 @@
 						TestTargetID = 13B07F861A680F5B00A75B9A;
 					};
 					13B07F861A680F5B00A75B9A = {
-						LastSwiftMigration = 1120;
+						LastSwiftMigration = 1300;
 					};
 				};
 			};
@@ -429,6 +434,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				13B07FBC1A68108700A75B9A /* AppDelegate.m in Sources */,
+				845B1E0827BE1099005DCB40 /* File.swift in Sources */,
 				13B07FC11A68108700A75B9A /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -448,6 +454,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = D2A82261D9C7C5A28CF4948A /* Pods-CredDemo-CredDemoTests.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
@@ -475,6 +482,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 1A78403D8C0A0EF8F435F740 /* Pods-CredDemo-CredDemoTests.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				COPY_PHASE_STRIP = NO;
 				INFOPLIST_FILE = CredDemoTests/Info.plist;
@@ -515,6 +523,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = CredDemo;
+				SWIFT_OBJC_BRIDGING_HEADER = "CredDemo-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";
@@ -540,6 +549,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = CredDemo;
+				SWIFT_OBJC_BRIDGING_HEADER = "CredDemo-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";
 			};

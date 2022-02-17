@@ -8,6 +8,7 @@ import {
   View,
   ActivityIndicator,
   TextInput,
+  Animated,
 } from 'react-native';
 import React, {useEffect, useRef, useState} from 'react';
 import axios from 'axios';
@@ -22,23 +23,19 @@ const fabIndiaLogo = require('../../../assets/Logo/fabIndiaLogo.webp');
 const arr = [myntraLogo, boatLogo, lenskartLogo, fabIndiaLogo];
 
 const BenefitScreen = () => {
+  // const {diffClamp}=Animated;
+  const ref = useRef(null);
+  const headerHeight = 28 * 2;
+  const scrollY = useRef(new Animated.Value(0)).current;
+  // const scrollYClamped = diffClamp(scrollY, 0, headerHeight);
   const [data, setData] = useState([]);
   const [extradata, setExtradata] = useState([]);
   const [more, setMore] = useState(1);
   const [act, setAct] = useState(false);
   const [search, setSearch] = useState();
-  useEffect(() => {
-    // axios
-    //   .get(
-    //     `https://jsonplaceholder.typicode.com/comments?_limit=3&_page=${more}`,
-    //   )
-    //   .then(res => {
-    //     setData([...data, ...res.data]);
-    //     setMore(more + 1);
-    //     console.log('useeffect', res);
-    //   })
-    //   .catch();
+  const translateYNumber = useRef();
 
+  useEffect(() => {
     axios
       .get(`https://jsonplaceholder.typicode.com/comments`)
       .then(res => {
@@ -48,48 +45,63 @@ const BenefitScreen = () => {
       .catch();
   }, []);
 
-  const press = () => {
-    console.log('extraData', extradata);
-  };
+  const inputRange = [0, headerHeight];
+  const translateY = scrollY.interpolate({
+    inputRange,
+    outputRange: [0, headerHeight - 20],
+  });
+
+  const handleScroll = Animated.event(
+    [
+      {
+        nativeEvent: {
+          contentOffset: {y: scrollY},
+        },
+      },
+    ],
+    {
+      useNativeDriver: true,
+    },
+  );
+
+  // console.log("handleScroll",handleScroll)
   return (
     <SafeAreaView style={styles.safeMain}>
-       
-      <TextInput
-        placeholder="SEARCH"
-        style={styles.searchBar}
-        onChangeText={text => {
-          setSearch(
-            extradata.filter(ele =>
-              ele.toLowerCase().includes(text.toLowerCase()),
-            ),
-          );
-          console.log("text",text);
-          if(text==''){
-            setSearch('')
-          }
-        }}
-      />
       {/* <TouchableOpacity onPress={press}>
         {act && <ActivityIndicator />}
         <Text style={{color: 'lightblue', fontSize: 20, fontWeight: 'bold'}}>
           more. . .
         </Text>
       </TouchableOpacity> */}
-      <FlatList
+      <Animated.FlatList
         data={search}
         showsVerticalScrollIndicator={false}
         keyExtractor={id => id.toString()}
+        scrollEventThrottle={16}
+        // onMomentumScrollEnd={handleSnap}
+        onScroll={handleScroll}
         renderItem={({item, index}) => {
           console.log(item);
+
           return (
-            <Text
-              style={styles.searchText}>
-              {item}
-            </Text>
+            <Animated.View
+              style={{
+                borderWidth: 1,
+                borderColor: 'white',
+                // flex:1,
+                // transform: [
+                //   {
+                //     translateY,
+                //   },
+                // ],
+                height: translateY,
+              }}>
+             
+              <Text style={styles.searchText}>{item}</Text>
+            </Animated.View>
           );
         }}
-
-        ListEmptyComponent={<ListEmpty/>}
+        ListEmptyComponent={<ListEmpty />}
       />
     </SafeAreaView>
   );
@@ -114,6 +126,7 @@ export default BenefitScreen;
 
 const styles = StyleSheet.create({
   safeMain: {
+    // marginTop: 200,
     flex: 1,
     backgroundColor: '#202427',
     // alignItems: 'center',
@@ -180,14 +193,15 @@ const styles = StyleSheet.create({
     color: 'white',
     paddingLeft: vw(10),
   },
-  searchText:{
+  searchText: {
     color: 'white',
     borderWidth: 1,
     borderColor: 'white',
     marginVertical: vh(5),
     paddingVertical: vh(10),
-    paddingLeft:vw(10),
+    paddingLeft: vw(10),
     fontSize: vw(20),
-    marginHorizontal:vw(10),borderRadius:vw(10)
-  }
+    marginHorizontal: vw(10),
+    borderRadius: vw(10),
+  },
 });
