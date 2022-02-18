@@ -37,6 +37,7 @@ const Manage = (props) => {
         icon={require('../../assets/Icons/headphone.png')}
         txt={'talk to us'}
         arrow={require('../../assets/Icons/next.png')}
+        press={()=>props.navigation.navigate("Chat")}
       />
       <Option
         icon={require('../../assets/Icons/customer-service.png')}

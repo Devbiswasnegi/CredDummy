@@ -16,10 +16,10 @@ import {useDispatch} from 'react-redux';
 import {loginNumber} from './action';
 import auth from '@react-native-firebase/auth';
 import {
-    GoogleSignin,
-    GoogleSigninButton,
-    statusCodes,
-  } from '@react-native-google-signin/google-signin';
+  GoogleSignin,
+  GoogleSigninButton,
+  statusCodes,
+} from '@react-native-google-signin/google-signin';
 //   import { LoginButton, AccessToken } from 'react-native-fbsdk-next';
 import GoogleFblogin from '../../Components/GoogleFblogin';
 
@@ -33,28 +33,27 @@ const LoginIn = props => {
   const pressButton = async () => {
     // console.log('number', '+91' + number);
     try {
-        auth()
+      auth()
         .signInWithEmailAndPassword(email, password)
         .then(() => {
-            props.navigation.navigate('GrantPermission', {
-                // number: number,
-                // confirmation: confirmation,
-              })
+          props.navigation.navigate('GrantPermission', {
+            // number: number,
+            // confirmation: confirmation,
+          });
         })
         .catch(error => {
           if (error.code === 'auth/email-already-in-use') {
             console.log('That email address is already in use!');
           }
-      
+
           if (error.code === 'auth/invalid-email') {
             console.log('That email address is invalid!');
           }
-      
+
           console.error(error);
         });
-  
+
       // dispatch(loginNumber(number));
-    
     } catch (err) {
       console.log('err', err);
     }
@@ -75,35 +74,35 @@ const LoginIn = props => {
         </Text>
 
         <View style={{paddingVertical: vh(20)}}>
-        <TextNumber
+          <TextNumber
             placeholder={'Email'}
             //   maxLength={10}
-              onChangeText={text => {
-                let re = /\S+@\S+\.\S+/;
-                if (re.test(text) === false) {
-                  // Alert.alert("please enter correct number")
-                  return false;
-                } else {
-                  setEmail(text);
-                  // Alert.alert('please enter correct number');
-                }
-              }}
+            onChangeText={text => {
+              let re = /\S+@\S+\.\S+/;
+              if (re.test(text) === false) {
+                // Alert.alert("please enter correct number")
+                return false;
+              } else {
+                setEmail(text);
+                // Alert.alert('please enter correct number');
+              }
+            }}
           />
 
-<TextNumber
+          <TextNumber
             placeholder={'Password'}
             //   maxLength={10}
-              onChangeText={text => {
-                // let re = /^[789]\d{9}$/;
-                // if (re.test(text) === false) {
-                //   // Alert.alert("please enter correct number")
-                //   return false;
-                // } else {
-                //   setNumber(text);
-                //   // Alert.alert('please enter correct number');
-                // }
-                setPassword(text)
-              }}
+            onChangeText={text => {
+              // let re = /^[789]\d{9}$/;
+              // if (re.test(text) === false) {
+              //   // Alert.alert("please enter correct number")
+              //   return false;
+              // } else {
+              //   setNumber(text);
+              //   // Alert.alert('please enter correct number');
+              // }
+              setPassword(text);
+            }}
           />
         </View>
 
@@ -142,14 +141,17 @@ const LoginIn = props => {
           <ButtonComponent opacity={check} onPress={pressButton} />
         </View>
 
-        <GoogleFblogin {...props}/>
+        <GoogleFblogin {...props} />
 
-
-        <TouchableOpacity onPress={()=>{props.navigation.navigate("ContactNumber")}} style={{marginTop:vh(20)}}>
-            <Text style={{color:"white",fontWeight:"bold"}}>USING MOBILE NUMBER FOR LOGIN ?</Text>
+        <TouchableOpacity
+          onPress={() => {
+            props.navigation.navigate('ContactNumber');
+          }}
+          style={{marginTop: vh(20)}}>
+          <Text style={{color: 'white', fontWeight: 'bold'}}>
+            USING MOBILE NUMBER FOR LOGIN ?
+          </Text>
         </TouchableOpacity>
-
-
       </View>
     </SafeAreaView>
   );

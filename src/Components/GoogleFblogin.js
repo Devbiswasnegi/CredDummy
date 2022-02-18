@@ -8,8 +8,11 @@ import auth from '@react-native-firebase/auth';
 import {useEffect} from 'react';
 import {LoginManager, AccessToken} from 'react-native-fbsdk-next';
 import {vh, vw} from '../Util/dimensions';
+import { useDispatch } from 'react-redux';
+import {userloginId} from '../Screens/Verify/action'
 
 const GoogleFblogin = props => {
+  const dispatch=useDispatch()
   useEffect(() => {
     GoogleSignin.configure({
       webClientId:
@@ -26,6 +29,9 @@ const GoogleFblogin = props => {
       const userInfo = await GoogleSignin.signIn();
       // //  this.setState({ userInfo });
       console.log('userInfo', userInfo);
+      console.log('userInfo', userInfo.user.id);
+      dispatch(userloginId(userInfo.user.id)
+      )
 
       const {idToken} = await GoogleSignin.signIn();
       console.log('idToken', idToken);
@@ -45,7 +51,7 @@ const GoogleFblogin = props => {
 
   async function onFacebookButtonPress() {
     // Attempt login with permissions
-    console.log('facebook');
+    // console.log('facebook');
     const result = await LoginManager.logInWithPermissions([
       'public_profile',
       'email',
@@ -57,6 +63,7 @@ const GoogleFblogin = props => {
 
     // Once signed in, get the users AccesToken
     const data = await AccessToken.getCurrentAccessToken();
+    console.log("facebookdata",data)
 
     if (!data) {
       throw 'Something went wrong obtaining access token';

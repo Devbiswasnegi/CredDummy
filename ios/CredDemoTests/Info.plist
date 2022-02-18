@@ -3,22 +3,22 @@
 <plist version="1.0">
 <dict>
   
-  <key>CFBundleURLTypes</key>
-  <array>
-    <dict>
-    <key>CFBundleURLSchemes</key>
-    <array>
-      <string>fb2766247227014009</string>
-    </array>
-    </dict>
-  </array>
-  <key>FacebookAppID</key>
-  <string>2766247227014009</string>
-  <key>FacebookClientToken</key>
-  <string>38660497980cbf9e105ca06fdfc63cc3</string>
-  <key>FacebookDisplayName</key>
-  <string>creddemo</string>
-  
+<!--  <key>CFBundleURLTypes</key>-->
+<!--  <array>-->
+<!--    <dict>-->
+<!--    <key>CFBundleURLSchemes</key>-->
+<!--    <array>-->
+<!--      <string>fb2766247227014009</string>-->
+<!--    </array>-->
+<!--    </dict>-->
+<!--  </array>-->
+<!--  <key>FacebookAppID</key>-->
+<!--  <string>2766247227014009</string>-->
+<!--  <key>FacebookClientToken</key>-->
+<!--  <string>38660497980cbf9e105ca06fdfc63cc3</string>-->
+<!--  <key>FacebookDisplayName</key>-->
+<!--  <string>creddemo</string>-->
+<!--  -->
   
   <key>LSApplicationQueriesSchemes</key>
   <array>

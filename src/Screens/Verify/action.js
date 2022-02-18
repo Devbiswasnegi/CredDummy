@@ -34,3 +34,10 @@ export const panNumberEnter = data => {
     payload: data,
   };
 };
+
+const loginUserId=(id)=>{
+  return{
+    type:"LOGINUSERID",
+    payload:id
+  }
+}

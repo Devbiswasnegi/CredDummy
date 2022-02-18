@@ -3,6 +3,7 @@ const initialState = {
   otp: '',
   name: '',
   panNumber: '',
+  userId:""
 };
 
 export const login = (state = initialState, action) => {
@@ -18,6 +19,9 @@ export const login = (state = initialState, action) => {
 
     case 'PAN_NUMBER':
       return {...state, panNumber: action.payload};
+
+      case 'LOGINUSERID':
+        return {...state, userId: action.payload};
 
     default:
       return state;

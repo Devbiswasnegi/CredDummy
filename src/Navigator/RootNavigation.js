@@ -21,6 +21,7 @@ import CardTopTabBar from './CardTopTabBar';
 import LoginIn from '../Screens/Verify/LoginIn';
 import SignUp from '../Screens/Verify/SignUp';
 import BenefitScreen from '../Screens/Cards/BenefitsScreens/BenefitScreen';
+import Chat from '../Screens/ChatScreen/Chat';
 
 const Stack = createNativeStackNavigator();
 
@@ -111,6 +112,12 @@ function RootNavigation() {
         <Stack.Screen
           name="MiscTwo"
           component={MiscTwo}
+          options={{headerShown: false}}
+        />
+
+<Stack.Screen
+          name="Chat"
+          component={Chat}
           options={{headerShown: false}}
         />
 
